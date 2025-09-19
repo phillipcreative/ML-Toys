@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "icon": "",
+        "image": "",
+        "text": "<p>Please go to homepage to proceed further.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

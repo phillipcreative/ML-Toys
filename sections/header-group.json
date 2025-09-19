@@ -1,0 +1,104 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Upgrade Your Power Wheels and Ride-On Toys!",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": false,
+        "announcement_menu": "",
+        "show_social": false,
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "font_weight": "fw-400",
+        "font_size": "small"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "9a39aedb-de0c-4cf7-8a91-af80f87184c6": {
+          "type": "link_list",
+          "settings": {
+            "menu_drawer_title": "Catalog",
+            "menu_drawer": "",
+            "icon_width": 22,
+            "icon_position": "top"
+          }
+        },
+        "item_icon_GCmymG": {
+          "type": "item_icon",
+          "settings": {
+            "menu_icon_title": "About us",
+            "icon_width": 24,
+            "icon_position": "top"
+          }
+        },
+        "item_icon_Azw3FW": {
+          "type": "item_icon",
+          "settings": {
+            "menu_icon_title": "Blog",
+            "icon_width": 23,
+            "icon_position": "top"
+          }
+        },
+        "item_icon_j6xR3B": {
+          "type": "item_icon",
+          "settings": {
+            "menu_icon_title": "Help",
+            "icon_width": 22,
+            "icon_position": "top"
+          }
+        }
+      },
+      "block_order": [
+        "9a39aedb-de0c-4cf7-8a91-af80f87184c6",
+        "item_icon_GCmymG",
+        "item_icon_Azw3FW",
+        "item_icon_j6xR3B"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_font_weight": "500",
+        "menu_type_desktop": "mega",
+        "show_mm_image": true,
+        "image_ratio": "landscape",
+        "drawer_product": "",
+        "sticky_header_type": "reduce-logo-size",
+        "show_line_separator": false,
+        "show_shadow": false,
+        "round_borders": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "show_image": false,
+        "show_name": false,
+        "show_currency": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "left",
+        "padding_top": 22,
+        "padding_bottom": 22
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

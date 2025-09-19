@@ -1,0 +1,116 @@
+<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+    <div class="section-header text-{{ section.settings.text_alignment }}">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+<div class="content-wrapper">
+    <div class="podcast-characters">
+      <div class="podcast-character-one">
+        {% if section.settings.podcast_character_one_desktop != blank %}
+          <img src="{{ section.settings.podcast_character_one_desktop | image_url: width: 1000 }}" alt="Podcast Character One" class="podcast-character-one-desktop">
+        {% endif %}
+        {% if section.settings.podcast_character_one_mobile != blank %}
+          <img src="{{ section.settings.podcast_character_one_mobile | image_url: width: 1000 }}" alt="Podcast Character One" class="podcast-character-one-mobile">
+        {% endif %}
+      </div>
+    </div>
+    <div class="apps-content">
+      {%- for block in section.blocks -%}
+        {% render block %}
+      {%- endfor -%}
+    </div>
+    <div class="podcast-characters">
+      <div class="podcast-character-one">
+        {% if section.settings.podcast_character_one_desktop != blank %}
+          <img src="{{ section.settings.podcast_character_two_desktop | image_url: width: 1000 }}" alt="Podcast Character Two" class="podcast-character-two-desktop">
+        {% endif %}
+        {% if section.settings.podcast_character_two_mobile != blank %}
+          <img src="{{ section.settings.podcast_character_two_mobile | image_url: width: 1000 }}" alt="Podcast Character Two" class="podcast-character-two-mobile">
+        {% endif %}
+      </div>
+      </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section section-apps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "podcast_character_one_desktop",
+      "label": "Podcast Character One Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "podcast_character_one_mobile",
+      "label": "Podcast Character One Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "podcast_character_two_desktop",
+      "label": "Podcast Character Two Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "podcast_character_two_mobile",
+      "label": "Podcast Character Two Mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

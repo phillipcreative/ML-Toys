@@ -1,0 +1,282 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "6a2fc120-4bf3-4610-a05d-7f55944c6720": {
+      "type": "image-banner-filter",
+      "blocks": {
+        "image_slide_JcyBwK": {
+          "type": "image_slide",
+          "settings": {
+            "image": "shopify://shop_images/HERO_HEADER.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "The ultimate ride starts here.",
+            "heading_size": "h1",
+            "text": "<p>Check out our upgrades to make your </p><p>ride-on the absolute coolest around!</p>",
+            "text_size_block": "medium",
+            "button_label_1": "Shop All Categories",
+            "button_link_1": "shopify://pages/upgrades-by-vehicle",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "shopify://pages/upgrades-by-category",
+            "button_style_secondary_2": true,
+            "color_scheme": "scheme-3",
+            "show_text_box": false,
+            "desktop_content_position": "bottom-center",
+            "desktop_content_alignment": "left",
+            "mobile_content_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_JcyBwK"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "filter_color_scheme": "",
+        "section_full_width": true,
+        "section_background": "#ffffff"
+      }
+    },
+    "a845fd8c-a661-412b-b2da-7787cec2a078": {
+      "type": "collection-tabs",
+      "blocks": {
+        "collection_7DKKte": {
+          "type": "collection",
+          "settings": {
+            "collection": "power-wheels-electrical-upgrades",
+            "collection_title": "Electrical Upgrades",
+            "show_view_all": false,
+            "button_label": "Shop All Categories",
+            "button_style_secondary": false
+          }
+        },
+        "collection_PczVrk": {
+          "type": "collection",
+          "settings": {
+            "collection": "batteries-chargers",
+            "collection_title": "Batteries",
+            "show_view_all": true,
+            "button_label": "View all",
+            "button_style_secondary": false
+          }
+        },
+        "collection_PPt9QW": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-other-vehicles",
+            "collection_title": "Lighting",
+            "show_view_all": false,
+            "button_label": "View all",
+            "button_style_secondary": false
+          }
+        },
+        "collection_zRtVh4": {
+          "type": "collection",
+          "settings": {
+            "collection": "other-stock-parts",
+            "collection_title": "Stock Parts",
+            "show_view_all": false,
+            "button_label": "View all",
+            "button_style_secondary": false
+          }
+        },
+        "collection_rCjLVR": {
+          "type": "collection",
+          "settings": {
+            "collection": "combination-kits",
+            "collection_title": "Combination kits",
+            "show_view_all": false,
+            "button_label": "View all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_7DKKte",
+        "collection_PczVrk",
+        "collection_PPt9QW",
+        "collection_zRtVh4",
+        "collection_rCjLVR"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/Group_427320668.svg",
+        "title": "Shop By Category",
+        "heading_alignment": "center",
+        "heading_size": "h2",
+        "description": "<p>Everything You Need To Get Started</p>",
+        "text_size_block": "medium",
+        "tabs_font_size": "h5",
+        "tabs_font_weight": "fw-700",
+        "tabs_font_family": "heading-font",
+        "card_heading_size": "h4",
+        "image_ratio": "square",
+        "image_overlay_opacity": 0,
+        "reverse_card": false,
+        "product_image_ratio": "landscape",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "products_to_show": 3,
+        "color_scheme": "scheme-2",
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "padding_top": 50,
+        "padding_bottom": 70
+      }
+    },
+    "product_slider_QMQ8Yn": {
+      "type": "product-slider",
+      "blocks": {
+        "slide_9EaGWA": {
+          "type": "Slide",
+          "settings": {
+            "enable_img_radius": true,
+            "slide_title": "Title",
+            "highlight_slide_title": "",
+            "heading_size": "h2",
+            "slide_description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_size_block": "medium",
+            "text_color": "main",
+            "link_label": "",
+            "enable_add_to_cart": false,
+            "color_scheme_slide": "",
+            "product": "",
+            "product_heading_font_family": "heading-font"
+          }
+        },
+        "slide_FfGKtE": {
+          "type": "Slide",
+          "settings": {
+            "enable_img_radius": true,
+            "slide_title": "Title",
+            "highlight_slide_title": "",
+            "heading_size": "h2",
+            "slide_description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_size_block": "medium",
+            "text_color": "main",
+            "link_label": "",
+            "enable_add_to_cart": false,
+            "color_scheme_slide": "",
+            "product": "",
+            "product_heading_font_family": "heading-font"
+          }
+        }
+      },
+      "block_order": [
+        "slide_9EaGWA",
+        "slide_FfGKtE"
+      ],
+      "name": "Product slider",
+      "settings": {
+        "image_position": "image-right",
+        "color_scheme": "",
+        "padding_top": 70,
+        "padding_bottom": 70
+      }
+    },
+    "mltoys_featured_blog_section_gKepmf": {
+      "type": "mltoys-featured-blog-section",
+      "blocks": {
+        "blog_FQwMDJ": {
+          "type": "blog",
+          "settings": {
+            "article": "",
+            "text_color": "foreground",
+            "text_size_block": "medium",
+            "button_style": "link_icon",
+            "link_label": "Read more",
+            "item_color_scheme": "scheme-1"
+          }
+        },
+        "blog_6NEiwc": {
+          "type": "blog",
+          "settings": {
+            "article": "",
+            "text_color": "foreground",
+            "text_size_block": "medium",
+            "button_style": "link_icon",
+            "link_label": "Read more",
+            "item_color_scheme": "scheme-1"
+          }
+        },
+        "blog_4H4hzd": {
+          "type": "blog",
+          "settings": {
+            "article": "",
+            "text_color": "foreground",
+            "text_size_block": "medium",
+            "button_style": "link_icon",
+            "link_label": "Read more",
+            "item_color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "blog_FQwMDJ",
+        "blog_6NEiwc",
+        "blog_4H4hzd"
+      ],
+      "name": "ML Toys Featured Blog",
+      "settings": {
+        "enable_ripped_edges": true,
+        "background_image": "shopify://shop_images/Mask_group.png",
+        "background_color": "#001429",
+        "section_text_color": "#ffffff",
+        "heading": "Pit stop Blog",
+        "heading_alignment": "center",
+        "heading_size": "h2",
+        "description": "<p>Stay up-to-date with advice from our professionals</p>",
+        "text_color": "foreground",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "button_link": "shopify://blogs/power-wheels-and-ride-on-toys",
+        "button_text": "View All Blogs"
+      }
+    },
+    "175825075732a38aad": {
+      "type": "apps",
+      "blocks": {
+        "ecom_youtube_card_gallery_carousel_YKTciC": {
+          "type": "shopify://apps/ecom-youtube-card-gallery/blocks/carousel/a0f27191-6c92-4d0a-a87c-2e3f3ecdeeab",
+          "settings": {
+            "gallery-id": "AQR3Qx7V",
+            "main-color": "#000000",
+            "sub-color": "#111111"
+          }
+        }
+      },
+      "block_order": [
+        "ecom_youtube_card_gallery_carousel_YKTciC"
+      ],
+      "settings": {
+        "heading": "Our Podcast",
+        "subheading": "Join us as we discuss all things power wheels!",
+        "text_alignment": "center",
+        "include_margins": true,
+        "podcast_character_one_desktop": "shopify://shop_images/ML_character_one_1.svg",
+        "podcast_character_one_mobile": "shopify://shop_images/MLTOYS_HEAD_one_1.svg",
+        "podcast_character_two_desktop": "shopify://shop_images/MLG_character_two_1.svg",
+        "podcast_character_two_mobile": "shopify://shop_images/MLTOYS_HEAD_two_1.svg"
+      }
+    }
+  },
+  "order": [
+    "6a2fc120-4bf3-4610-a05d-7f55944c6720",
+    "a845fd8c-a661-412b-b2da-7787cec2a078",
+    "product_slider_QMQ8Yn",
+    "mltoys_featured_blog_section_gKepmf",
+    "175825075732a38aad"
+  ]
+}
