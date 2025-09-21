@@ -1,0 +1,337 @@
+{% comment %}
+  Section: Upgrades by Vehicle
+  This section displays a slider of vehicles with a title, subheading, and icons.
+{% endcomment %}
+
+<style>
+  .upgrades-by-vehicle {
+    padding: 50px 0;
+    text-align: center;
+    position: relative; /* anchor for the floating SVG holder */
+    {% if section.settings.background_image != blank %}
+      background-image: url('{{ section.settings.background_image | image_url }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
+  }
+
+  .upgrades-by-vehicle__header { margin-bottom: 40px; }
+
+  .upgrades-by-vehicle__title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .upgrades-by-vehicle__title {
+    font-size: 55px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .upgrades-by-vehicle__icon { width: 30px; height: auto; }
+
+  .upgrades-by-vehicle__subheading {
+    font-size: 18px;
+    color: #001429;
+    margin: 0;
+  }
+
+  .upgrades-by-vehicle__grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    row-gap: 95px;
+    max-width: 1015px;
+    margin: 0 auto;
+    margin-top: 150px;
+    position: relative;
+    justify-items: center;
+  }
+
+  .vehicle-card {
+    height: 160px;
+    width: 215px;
+    border: 2px solid #001429;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background: #fff;
+    position: relative;
+    z-index: 1; /* above the SVG (z:0) */
+  }
+
+  .vehicle-card:hover {
+    box-shadow: -5px 5px #001429;
+    transform: translateY(-2px);
+  }
+
+  .vehicle-card__image {
+    height: auto;
+    margin-bottom: 15px;
+    position: absolute;
+    top: -85px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 190px;
+    z-index: 2; /* keep above scribble */
+  }
+
+  .vehicle-card__title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #001429;
+    margin: 0;
+    position: relative;
+    z-index: 2; /* keep above scribble */
+  }
+
+  .view-all-button-wrapper { margin-top: 40px; }
+
+  .view-all-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .view-all-button:hover { background-color: #000; color: #fff; }
+
+  /* --- Floating SVG holder (single instance) --- */
+  #circle-hover-holder {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    z-index: 0; /* between card content (z:2) and section background */
+  }
+  #circle-hover-holder svg { width: 100%; height: 100%; display: block; }
+  #circle-hover-holder path {
+    fill: none;
+    stroke: #001429;        /* change to #001429 if you want brand blue */
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;             /* JS will set to 1 during animation */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .vehicle-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 600px;
+    }
+    .vehicle-grid > .vehicle-card:nth-child(-n+4),
+    .vehicle-grid > .vehicle-card:nth-child(n+5) { transform: translateX(0); }
+    .vehicle-grid > .vehicle-card:nth-child(odd) { transform: translateX(15px); }
+    .vehicle-grid > .vehicle-card:nth-child(even) { transform: translateX(-15px); }
+    .upgrades-by-vehicle__title { font-size: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .vehicle-grid { grid-template-columns: 1fr; gap: 10px; max-width: 300px; }
+    .vehicle-grid > .vehicle-card:nth-child(-n+4),
+    .vehicle-grid > .vehicle-card:nth-child(n+5),
+    .vehicle-grid > .vehicle-card:nth-child(odd),
+    .vehicle-grid > .vehicle-card:nth-child(even) { transform: translateX(0); }
+    .upgrades-by-vehicle__title { font-size: 20px; }
+  }
+</style>
+
+<div class="upgrades-by-vehicle" data-section-id="{{ section.id }}">
+  <div class="upgrades-by-vehicle__header">
+    <div class="upgrades-by-vehicle__title-wrapper">
+      {% if section.settings.left_icon != blank %}
+        {{ section.settings.left_icon | image_url: width: 30 | image_tag: class: 'upgrades-by-vehicle__icon' }}
+      {% endif %}
+      <h2 class="upgrades-by-vehicle__title">{{ section.settings.title }}</h2>
+      {% if section.settings.right_icon != blank %}
+        {{ section.settings.right_icon | image_url: width: 30 | image_tag: class: 'upgrades-by-vehicle__icon' }}
+      {% endif %}
+    </div>
+    {% if section.settings.subheading != blank %}
+      <p class="upgrades-by-vehicle__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+
+  <div class="upgrades-by-vehicle__grid-container">
+    <div class="vehicle-grid">
+      {% for block in section.blocks %}
+        <div class="vehicle-card" tabindex="0">
+          {% if block.settings.vehicle_image != blank %}
+            {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
+          {% endif %}
+          <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+    <div class="view-all-button-wrapper">
+      <a href="{{ section.settings.button_link }}" class="view-all-button">
+        {{ section.settings.button_label }}
+      </a>
+    </div>
+  {% endif %}
+
+  {%- comment -%} Single reusable SVG holder (your exact path) {%- endcomment -%}
+  <div id="circle-hover-holder" aria-hidden="true">
+    <svg viewBox="0 0 255 123" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(-202.000000, -621.000000)">
+        <path id="nav-highlight" d="M312.746942,635.665667 C342.795755,635.665667 375.470718,641.874839 402.954847,654.421766 C416.593426,660.647987 463.681881,688.842028 452.732938,710.684109 C448.31537,719.496729 431.51489,724.593355 423.521058,727.249019 C405.798351,733.136752 387.332026,736.758403 368.836609,739.086201 C349.245671,741.55188 329.886077,741.634649 310.180631,741.634649 C292.389277,741.772182 274.702257,738.728513 258.062494,732.345914 C235.229245,723.58765 191.996533,692.240765 212.255932,662.251693 C233.170218,631.293221 306.497162,621.021193 340.559557,623.102058 C369.728418,624.883978 439.625909,645.054895 444.325442,680.638624 C445.728867,691.26502 442.74171,700.834782 434.738991,708.135661 C406.670607,733.742444 340.753995,727.612232 305.738711,727.612232 C285.150548,727.426236 264.579746,724.714287 244.510468,720.151473 C210.20282,712.351521 184.271563,693.90334 222.539037,666.258949 C273.719197,629.286445 352.102877,620.558956 411.838688,637.850902 C435.325989,644.649857 461.201224,658.041509 453.667766,685.920104"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function () {
+  const holder = document.getElementById('circle-hover-holder');
+  if (!holder) return;
+
+  const svgPath = holder.querySelector('path');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Easing (easeInOutQuad), like the original snippet
+  function easeInOutQuad(t){ return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+
+  function prepPath(path){
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = `${len} ${len}`;
+    path.style.strokeDashoffset = `${len}`;
+    path.style.opacity = '1';
+    return len;
+  }
+
+  function resetPath(path){
+    path.style.opacity = '0';
+    path.style.strokeDasharray = '';
+    path.style.strokeDashoffset = '';
+  }
+
+  function animatePath(path, duration){
+    const total = path.getTotalLength();
+    const start = performance.now();
+    function frame(now){
+      const t = Math.min(1, (now - start) / duration);
+      const k = easeInOutQuad(t);
+      path.style.strokeDashoffset = String((1 - k) * total);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Position holder over a given card with an organic margin like the original (+50/+40)
+  function positionHolderOver(card){
+    const section = card.closest('.upgrades-by-vehicle') || document.body;
+    const sectionRect = section.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+
+    const extraW = 50; // width + 50
+    const extraH = 40; // height + 40
+
+    const width = cardRect.width + extraW;
+    const height = cardRect.height + extraH;
+
+    const left = cardRect.left - sectionRect.left - (extraW / 2);
+    const top  = cardRect.top  - sectionRect.top  - (extraH / 2);
+
+    holder.style.width = `${width}px`;
+    holder.style.height = `${height}px`;
+    holder.style.left = `${left}px`;
+    holder.style.top = `${top}px`;
+  }
+
+  let animating = false;
+
+  function onEnter(card){
+    positionHolderOver(card);
+    holder.style.display = 'block';
+    if (prefersReduced || animating) return;
+    animating = true;
+    prepPath(svgPath);
+    animatePath(svgPath, 550);
+    setTimeout(() => { animating = false; }, 600);
+  }
+
+  function onLeave(){
+    holder.style.display = 'none';
+    resetPath(svgPath);
+  }
+
+  // Hook up all vehicle cards
+  document.querySelectorAll('.vehicle-card').forEach(card => {
+    card.addEventListener('mouseenter', () => onEnter(card));
+    card.addEventListener('mouseleave', onLeave);
+    // keyboard focus support
+    card.addEventListener('focusin', () => onEnter(card));
+    card.addEventListener('focusout', onLeave);
+  });
+
+  // Keep it aligned when scrolling/resizing while visible
+  ['scroll','resize'].forEach(evt => {
+    window.addEventListener(evt, () => {
+      if (holder.style.display !== 'block') return;
+      const active = document.querySelector('.vehicle-card:hover, .vehicle-card:focus-within');
+      if (active) positionHolderOver(active);
+    }, { passive: true });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Upgrades by Vehicle",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Upgrades by Vehicle" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Parts for the most popular brands" },
+    { "type": "image_picker", "id": "left_icon", "label": "Left Icon" },
+    { "type": "image_picker", "id": "right_icon", "label": "Right Icon" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "View All Vehicles" },
+    { "type": "url", "id": "button_link", "label": "Button Link" }
+  ],
+  "blocks": [
+    {
+      "type": "vehicle",
+      "name": "Vehicle",
+      "settings": [
+        { "type": "image_picker", "id": "vehicle_image", "label": "Vehicle Image" },
+        { "type": "text", "id": "vehicle_title", "label": "Vehicle Title", "default": "Vehicle Name" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upgrades by Vehicle",
+      "blocks": [
+        { "type": "vehicle" }, { "type": "vehicle" }, { "type": "vehicle" }, { "type": "vehicle" },
+        { "type": "vehicle" }, { "type": "vehicle" }, { "type": "vehicle" }, { "type": "vehicle" }
+      ]
+    }
+  ]
+}
+{% endschema %}

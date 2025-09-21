@@ -1,4 +1,4 @@
-<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} app-wrapper">
   {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
     <div class="section-header text-{{ section.settings.text_alignment }}">
       {%- if section.settings.heading != blank -%}
@@ -9,6 +9,12 @@
       {%- endif -%}
     </div>
   {%- endif -%}
+
+  {% if section.settings.include_treadmark_bg %}
+    <div class="treadmark-bg">
+      {% render 'tire-tread-bg' %}
+    </div>
+  {% endif %}
 
 <div class="content-wrapper">
     <div class="podcast-characters">
@@ -38,6 +44,23 @@
       </div>
   </div>
 </div>
+
+<style>
+
+.app-wrapper {
+  position: relative;
+}
+  .app-wrapper .treadmark-bg {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: -67%;
+    width: 130%;
+    height: 105%;
+    overflow: hidden;
+    z-index: -5;
+  }
+</style>
 
 {% schema %}
 {
@@ -80,6 +103,12 @@
       "id": "include_margins",
       "default": true,
       "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_treadmark_bg",
+      "default": false,
+      "label": "Include Treadmark Background"
     },
     {
       "type": "image_picker",

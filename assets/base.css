@@ -4496,6 +4496,8 @@ h6,
 
 .section-apps .page-width {
   max-width: 120rem;
+  padding: 4rem 1rem;
+  margin-top: 6rem;
 }
 
 .section-apps .section-heading,
@@ -4530,3 +4532,308 @@ h6,
     display: none;
   }
 }
+
+
+/* ML Toys Product Slider */
+
+.ml-toys-product-slider {
+  position: relative;
+}
+
+.ml-toys-product-slider .top-torn-edge {
+  top: -140px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: auto;
+  position: absolute;
+}
+
+.ml-toys-product-slider .top-torn-edge svg {
+  width: 100%;
+  height: auto;
+}
+
+.ml-toys-product-slider .slide-icon img{
+  width: 65px;
+  height: auto;
+}
+
+.ml-toys-product-slider .product-slider__wrapper {
+  max-width: 1350px;
+}
+
+.ml-toys-product-slider .slide__title {
+  font-size: 55px;
+}
+
+.ml-toys-product-slider .slide__description p {
+  font-size: 16px;
+}
+
+.ml-toys-product-slider .slide__link {
+  text-decoration: none;
+  padding: 6px 20px;
+  background-color: #DF1D37;
+  color: #fff;
+  border-radius: 30px;
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  transition: all .25s ease;
+  margin-top: 25px;
+}
+
+.ml-toys-product-slider .slide__link svg path {
+  fill: #fff;
+}
+
+.ml-toys-product-slider .slide-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Featured Collection Grid */
+.section-collection-tabs {
+  position: relative;
+}
+
+.ml-collection-list-grid .collection-list__item {
+  max-width: 250px !important;
+}
+
+.collection-tabs-bg-tread {
+  position: absolute;
+  top: -42px;
+  right: 23px;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  width: 800px;
+}
+
+.custom-card-wrapper {
+  height: 100%;
+}
+
+.custom-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-card {
+  border-radius: 25px;
+  border: 2px solid #1a365d;
+  background: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.custom-card:hover {
+  transform: translateY(-4px);
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.custom-card__image-container {
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  border: 0px;
+  box-shadow: unset;
+  height: 200px;
+  border: 2px solid #1a365d;
+  border-radius: 0px 0px 25px 25px;
+}
+
+.custom-card__image {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.custom-card__content {
+  padding: 16px;
+  background: #fff;
+}
+
+.custom-card__title {
+  margin: 0;
+  font-family: Inter, sans-serif !important;
+  font-size: 16px;
+  gap: 4px;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  color: #1a365d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-card__description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.4;
+}
+
+.custom-card__arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1a365d;
+}
+
+@media screen and (max-width: 749px) {
+  .custom-card__image-container {
+    padding: 12px;
+  }
+
+  .custom-card__content {
+    padding: 12px;
+  }
+
+  .custom-card__title {
+    font-size: 14px;
+  }
+
+  .custom-card__description {
+    font-size: 0.85rem;
+  }
+}
+
+/* ML Toys Upgrade Vehicle */
+  .upgrades-by-vehicle {
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .upgrades-by-vehicle__header {
+    margin-bottom: 40px;
+  }
+
+  .upgrades-by-vehicle__title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .upgrades-by-vehicle__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .upgrades-by-vehicle__icon {
+    width: 30px;
+    height: auto;
+  }
+
+  .upgrades-by-vehicle__subheading {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .upgrades-by-vehicle__slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; /* Space for arrows */
+  }
+
+  .upgrades-by-vehicle .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vehicle-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .vehicle-card:hover {
+    box-shadow: -5px 5px #001429;
+    cursor: pointer;
+  }
+
+  .vehicle-card__image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .vehicle-card__title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #000;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+
+  .view-all-button-wrapper {
+    margin-top: 40px;
+  }
+
+  .view-all-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .view-all-button:hover {
+    background-color: #000;
+    color: #fff;
+  }

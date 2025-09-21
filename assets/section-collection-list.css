@@ -202,6 +202,8 @@
   align-items: flex-end;
   row-gap: calc(var(--grid-desktop-vertical-spacing) / 2);
   list-style-type: none;
+  max-width: 75%;
+  margin: auto;
   margin-top: 0;
   margin-bottom: 4rem;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.3);
@@ -490,6 +492,7 @@
 
 .collection__navigation {
   justify-content: center !important;
+  border-bottom: .1rem solid rgba(0, 20, 41, .3);
 }
 
 .collection-list-wrapper .section-heading .section-title+.section-description {
@@ -506,7 +509,7 @@
   font-family: 'Inter', sans-serif !important;
   font-size: 18px !important;
   font-weight: 800 !important;
-  padding-bottom: 0 !important;
+  padding-bottom: 10px !important;
   text-transform: unset !important;
 }
 
@@ -537,4 +540,175 @@ li.navigation-item h3:hover {
 
 .collection-tabs-bg-image img {
   width: 100%;
+}
+
+.collection__navigation .navigation-item.active:after {
+  height: .5rem;
+  opacity: 1;
+  border-radius: 0px !important;
+}
+
+/* ML Toys Card Styles */
+.ml-toys-card {
+  border: 2px solid #1a2332;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #f8f9fa;
+}
+
+.ml-toys-card .card__content {
+  padding: 1.5rem;
+}
+
+.ml-toys-card .card__heading {
+  font-weight: 900;
+  color: #1a2332;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin-bottom: 0px;
+}
+
+.ml-toys-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.ml-toys-view-more-btn {
+  background: #1a2332;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.ml-toys-view-more-btn:hover {
+  background: #2a3442;
+  transform: translateY(-1px);
+}
+
+.ml-toys-plus-btn {
+  background: #2a3442;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ml-toys-plus-btn:hover {
+  background: #df1d37;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.ml-toys-card .card__inner {
+  height: 200px;
+}
+
+.ml-toys-plus-icon {
+  font-size: 2rem;
+  font-weight: bolder;
+  line-height: 1;
+}
+
+.ml-toys-plus-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ml-toys-plus-btn:disabled:hover {
+  transform: none;
+  background: #1a2332;
+}
+
+.custom-product-card-wrapper {
+  border: 2px solid #001429;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.ml-toys-view-more-btn {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid transparent;
+}
+
+.ml-toys-view-more-btn:hover {
+  background: #fafafa !important;
+  color: #001429;
+  border: 1px solid #001429;
+}
+
+.collection-list-wrapper .ml-button-primary {
+  margin-top: 50px !important;
+}
+
+.collection-tabs-list .collection-list__item {
+  max-width: 250px !important;
+}
+
+/* Hide price and other elements for cleaner design */
+.ml-toys-card .price {
+  display: none;
+}
+
+.ml-toys-card .card-information {
+  display: none;
+}
+
+.ml-toys-card .card__heading a,
+.ml-toys-card .card__heading {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bolder !important;
+  line-height: 1.3 !important;
+  text-align: left;
+}
+
+.ml-toys-card .card__heading {
+  margin-bottom: 10px !important;
+}
+
+.ml-toys-card .card__heading a {
+  text-decoration: none !important;
+}
+
+.ml-toys-card .card--card.card--media>.card__content {
+  padding: 0px !important;
+}
+
+.ml-toys-card-actions {
+  padding-top: 0px !important;
+}
+
+.collection-list {
+  justify-content: center;
+}
+
+@media screen and (max-width: 749px) {
+  .ml-toys-card-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ml-toys-view-more-btn {
+    width: 100%;
+  }
 }
