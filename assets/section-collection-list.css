@@ -712,3 +712,16 @@ li.navigation-item h3:hover {
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .collection-tabs-list .collection-list__item {
+    max-width: 280px !important;
+    width: 100% !important;
+  }
+
+  .collection-list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

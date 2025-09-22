@@ -16,14 +16,22 @@
     </div>
   {% endif %}
 
+<div class="podcast-characters-wrapper-mobile">
+
+  {% if section.settings.podcast_character_one_mobile != blank %}
+    <img src="{{ section.settings.podcast_character_one_mobile | image_url: width: 1000 }}" alt="Podcast Character One" class="podcast-character-one-mobile">
+  {% endif %}
+
+  {% if section.settings.podcast_character_two_mobile != blank %}
+    <img src="{{ section.settings.podcast_character_two_mobile | image_url: width: 1000 }}" alt="Podcast Character Two" class="podcast-character-two-mobile">
+  {% endif %}
+</div>
+
 <div class="content-wrapper">
     <div class="podcast-characters">
       <div class="podcast-character-one">
         {% if section.settings.podcast_character_one_desktop != blank %}
           <img src="{{ section.settings.podcast_character_one_desktop | image_url: width: 1000 }}" alt="Podcast Character One" class="podcast-character-one-desktop">
-        {% endif %}
-        {% if section.settings.podcast_character_one_mobile != blank %}
-          <img src="{{ section.settings.podcast_character_one_mobile | image_url: width: 1000 }}" alt="Podcast Character One" class="podcast-character-one-mobile">
         {% endif %}
       </div>
     </div>
@@ -36,9 +44,6 @@
       <div class="podcast-character-one">
         {% if section.settings.podcast_character_one_desktop != blank %}
           <img src="{{ section.settings.podcast_character_two_desktop | image_url: width: 1000 }}" alt="Podcast Character Two" class="podcast-character-two-desktop">
-        {% endif %}
-        {% if section.settings.podcast_character_two_mobile != blank %}
-          <img src="{{ section.settings.podcast_character_two_mobile | image_url: width: 1000 }}" alt="Podcast Character Two" class="podcast-character-two-mobile">
         {% endif %}
       </div>
       </div>
@@ -60,6 +65,21 @@
     height: 105%;
     overflow: hidden;
     z-index: -5;
+  }
+
+  .podcast-characters-wrapper-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 450px) {
+
+  .podcast-characters-wrapper-mobile {
+    display: flex;
+    justify-content: center;
+  }
+    .apps-content {
+      max-width: 90%;
+    }
   }
 </style>
 

@@ -1,4 +1,13 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
@@ -32,52 +41,36 @@
     "header": {
       "type": "header",
       "blocks": {
-        "9a39aedb-de0c-4cf7-8a91-af80f87184c6": {
+        "link_list_4TGqRe": {
           "type": "link_list",
           "settings": {
             "menu_drawer_title": "Catalog",
-            "menu_drawer": "",
-            "icon_width": 22,
+            "menu_drawer": "main-menu",
+            "icon": "shopify://shop_images/category_1.svg",
+            "icon_width": 20,
             "icon_position": "top"
           }
         },
-        "item_icon_GCmymG": {
+        "item_icon_fpypKt": {
           "type": "item_icon",
           "settings": {
-            "menu_icon_title": "About us",
-            "icon_width": 24,
-            "icon_position": "top"
-          }
-        },
-        "item_icon_Azw3FW": {
-          "type": "item_icon",
-          "settings": {
-            "menu_icon_title": "Blog",
-            "icon_width": 23,
-            "icon_position": "top"
-          }
-        },
-        "item_icon_j6xR3B": {
-          "type": "item_icon",
-          "settings": {
-            "menu_icon_title": "Help",
-            "icon_width": 22,
+            "menu_icon_title": "Start Here",
+            "icon": "shopify://shop_images/icon-help_1.svg",
+            "icon_width": 20,
             "icon_position": "top"
           }
         }
       },
       "block_order": [
-        "9a39aedb-de0c-4cf7-8a91-af80f87184c6",
-        "item_icon_GCmymG",
-        "item_icon_Azw3FW",
-        "item_icon_j6xR3B"
+        "link_list_4TGqRe",
+        "item_icon_fpypKt"
       ],
       "settings": {
         "logo_position": "middle-left",
-        "menu": "main-menu",
+        "menu": "main-menu-copy",
         "menu_font_weight": "500",
         "menu_type_desktop": "mega",
-        "show_mm_image": true,
+        "show_mm_image": false,
         "image_ratio": "landscape",
         "drawer_product": "",
         "sticky_header_type": "reduce-logo-size",

@@ -1,4 +1,13 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
@@ -39,13 +48,6 @@
             "heading": "Legal support",
             "menu": "footer"
           }
-        },
-        "background_image_w9Xz6p": {
-          "type": "background_image",
-          "settings": {
-            "image_width": 1400,
-            "image_repeat": "no-repeat"
-          }
         }
       },
       "block_order": [
@@ -53,12 +55,12 @@
         "footer-1",
         "89f2b72b-8551-4b3c-a430-1719424d7f61",
         "7760174b-bd0c-4b3e-b524-15a41eb9dabc",
-        "link_list_8rYTyg",
-        "background_image_w9Xz6p"
+        "link_list_8rYTyg"
       ],
       "settings": {
         "color_scheme": "scheme-3",
         "heading_size": "h5",
+        "logo": "shopify://shop_images/ml-toy-logo.png",
         "logo_width": 190,
         "show_social": true,
         "social_icon_style": "default",
@@ -66,11 +68,11 @@
         "newsletter_enable": true,
         "newsletter_enable_top": true,
         "newsletter_title": "",
-        "newsletter_description": "<p>Join our newsletter for new offers.<\/p>",
+        "newsletter_description": "<p>Join our newsletter for new offers.</p>",
         "enable_follow_on_shop": true,
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "footer_subtext": "<p>This is a demo store. All images have been sourced from Shutterstock and Adobe stock.<\/p>",
+        "footer_subtext": "<p>This is a demo store. All images have been sourced from Shutterstock and Adobe stock.</p>",
         "payment_enable": true,
         "policy_color_scheme": "",
         "show_policy": true,

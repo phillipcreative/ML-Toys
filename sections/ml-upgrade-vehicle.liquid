@@ -297,6 +297,10 @@
   }
 
   @media (max-width: 480px) {
+
+    .upgrades-by-vehicle {
+      overflow: hidden;
+    }
     .vehicle-swiper {
       margin-top: 10px;
       padding: 0 20px;
@@ -304,7 +308,7 @@
     }
 
     .vehicle-swiper .swiper-slide {
-      margin-bottom: 60px; /* Increased to accommodate image overflow */
+      margin-bottom: 0px; /* Increased to accommodate image overflow */
       padding-top: 80px; /* Add padding to prevent image cutoff */
     }
 
@@ -343,7 +347,11 @@
     }
 
     .upgrades-by-vehicle__title {
-      font-size: 20px;
+      font-size: 45px;
+    }
+
+    .upgrades-by-vehicle__header {
+      margin-bottom: 20px;
     }
   }
 </style>
