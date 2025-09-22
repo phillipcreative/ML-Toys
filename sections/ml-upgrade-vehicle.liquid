@@ -3,9 +3,12 @@
   This section displays a slider of vehicles with a title, subheading, and icons.
 {% endcomment %}
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <style>
   .upgrades-by-vehicle {
-    padding: 50px 0;
+    /* padding: 50px 0; */
     text-align: center;
     position: relative; /* anchor for the floating SVG holder */
     {% if section.settings.background_image != blank %}
@@ -41,9 +44,27 @@
   }
 
   .upgrades-by-vehicle__grid-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 20px;
+  }
+
+  /* Swiper container styles */
+  .vehicle-swiper {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 0 20px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .vehicle-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
   }
 
   .vehicle-grid {
@@ -60,7 +81,7 @@
   }
 
   .vehicle-card {
-    height: 160px;
+    height: 115px;
     width: 215px;
     border: 2px solid #001429;
     border-radius: 15px;
@@ -72,7 +93,7 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     background: #fff;
     position: relative;
-    z-index: 1; /* above the SVG (z:0) */
+    z-index: 2; /* above the SVG (z:0) */
   }
 
   .vehicle-card:hover {
@@ -89,7 +110,7 @@
     right: 0;
     margin: auto;
     max-width: 190px;
-    z-index: 2; /* keep above scribble */
+    z-index: 3; /* keep above card and SVG */
   }
 
   .vehicle-card__title {
@@ -98,7 +119,7 @@
     color: #001429;
     margin: 0;
     position: relative;
-    z-index: 2; /* keep above scribble */
+    z-index: 3; /* keep above card and SVG */
   }
 
   .view-all-button-wrapper { margin-top: 40px; }
@@ -116,45 +137,214 @@
 
   .view-all-button:hover { background-color: #000; color: #fff; }
 
-  /* --- Floating SVG holder (single instance) --- */
-  #circle-hover-holder {
-    display: none;
-    position: absolute;
-    pointer-events: none;
-    z-index: 0; /* between card content (z:2) and section background */
+  /* --- Static SVG behind each card --- */
+  .vehicle-card-wrapper {
+    position: relative;
+    display: grid;
+    place-items: center;
   }
-  #circle-hover-holder svg { width: 100%; height: 100%; display: block; }
-  #circle-hover-holder path {
+
+  .vehicle-card__svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    z-index: 0; /* behind the card */
+  }
+
+  .vehicle-card__svg svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .vehicle-card__svg path {
     fill: none;
-    stroke: #001429;        /* change to #001429 if you want brand blue */
+    stroke: #001429;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
-    opacity: 0;             /* JS will set to 1 during animation */
+    opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: opacity 0.3s ease, stroke-dashoffset 0.6s ease;
+  }
+
+  .vehicle-card-wrapper:hover .vehicle-card__svg path {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  /* Swiper navigation styles */
+  .vehicle-swiper .swiper-button-next,
+  .vehicle-swiper .swiper-button-prev {
+    color: #001429;
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #001429;
+    transition: all 0.3s ease;
+  }
+
+  .vehicle-swiper .swiper-button-next:hover,
+  .vehicle-swiper .swiper-button-prev:hover {
+    background: #001429;
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  .vehicle-swiper .swiper-button-next:after,
+  .vehicle-swiper .swiper-button-prev:after {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Position navigation buttons */
+  .vehicle-swiper .swiper-button-next {
+    right: -25px;
+  }
+
+  .vehicle-swiper .swiper-button-prev {
+    left: -25px;
+  }
+
+  .vehicle-swiper .swiper-pagination-bullet {
+    background: #001429;
+    opacity: 0.3;
+  }
+
+  .vehicle-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  /* Mobile pagination positioning */
+  .vehicle-swiper .swiper-pagination {
+    position: relative;
+    margin-top: 30px;
+    bottom: auto;
   }
 
   /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .vehicle-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 15px;
-      max-width: 600px;
+  @media (max-width: 1200px) {
+    .vehicle-swiper .swiper-button-next {
+      right: 10px;
     }
-    .vehicle-grid > .vehicle-card:nth-child(-n+4),
-    .vehicle-grid > .vehicle-card:nth-child(n+5) { transform: translateX(0); }
-    .vehicle-grid > .vehicle-card:nth-child(odd) { transform: translateX(15px); }
-    .vehicle-grid > .vehicle-card:nth-child(even) { transform: translateX(-15px); }
-    .upgrades-by-vehicle__title { font-size: 24px; }
+
+    .vehicle-swiper .swiper-button-prev {
+      left: 10px;
+    }
+
+    .vehicle-swiper {
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vehicle-swiper {
+      margin-top: 100px;
+      overflow: visible;
+    }
+
+    .vehicle-swiper .swiper-slide {
+      margin-bottom: 60px; /* Increased for image space */
+      padding-top: 70px; /* Add padding to prevent image cutoff */
+    }
+
+    /* Adjust vehicle card for tablet */
+    .vehicle-card {
+      height: 120px;
+      width: 210px;
+      margin: 0 auto;
+    }
+
+    /* Adjust image positioning for tablet */
+    .vehicle-card__image {
+      top: -80px; /* Slightly reduced */
+      max-width: 170px; /* Slightly smaller */
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+
+    .vehicle-swiper .swiper-button-next,
+    .vehicle-swiper .swiper-button-prev {
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+    }
+
+    .vehicle-swiper .swiper-button-next {
+      right: 5px;
+    }
+
+    .vehicle-swiper .swiper-button-prev {
+      left: 5px;
+    }
+
+    .vehicle-swiper .swiper-pagination {
+      margin-top: 40px;
+    }
+
+    .upgrades-by-vehicle__title {
+      font-size: 24px;
+    }
   }
 
   @media (max-width: 480px) {
-    .vehicle-grid { grid-template-columns: 1fr; gap: 10px; max-width: 300px; }
-    .vehicle-grid > .vehicle-card:nth-child(-n+4),
-    .vehicle-grid > .vehicle-card:nth-child(n+5),
-    .vehicle-grid > .vehicle-card:nth-child(odd),
-    .vehicle-grid > .vehicle-card:nth-child(even) { transform: translateX(0); }
-    .upgrades-by-vehicle__title { font-size: 20px; }
+    .vehicle-swiper {
+      margin-top: 10px;
+      padding: 0 20px;
+      overflow: visible;
+    }
+
+    .vehicle-swiper .swiper-slide {
+      margin-bottom: 60px; /* Increased to accommodate image overflow */
+      padding-top: 80px; /* Add padding to prevent image cutoff */
+    }
+
+    /* Adjust vehicle card for mobile */
+    .vehicle-card {
+      height: 120px;
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    /* Fix image positioning for mobile */
+    .vehicle-card__image {
+      top: -75px; /* Reduced from -85px */
+      max-width: 160px; /* Slightly smaller for mobile */
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+
+    /* Show navigation on mobile but smaller */
+    .vehicle-swiper .swiper-button-next,
+    .vehicle-swiper .swiper-button-prev {
+      width: 35px;
+      height: 35px;
+      margin-top: -17px;
+      display: flex;
+    }
+
+    .vehicle-swiper .swiper-button-next:after,
+    .vehicle-swiper .swiper-button-prev:after {
+      font-size: 14px;
+    }
+
+    .vehicle-swiper .swiper-pagination {
+      margin-top: 30px;
+    }
+
+    .upgrades-by-vehicle__title {
+      font-size: 20px;
+    }
   }
 </style>
 
@@ -175,17 +365,37 @@
   </div>
 
   <div class="upgrades-by-vehicle__grid-container">
-    <div class="vehicle-grid">
-      {% for block in section.blocks %}
-        <div class="vehicle-card" tabindex="0">
-          {% if block.settings.vehicle_image != blank %}
-            {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
-          {% else %}
-            {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
-          {% endif %}
-          <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
-        </div>
-      {% endfor %}
+    <div class="vehicle-swiper swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="vehicle-card-wrapper">
+              <div class="vehicle-card__svg">
+                <svg viewBox="0 0 255 123" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(-202.000000, -621.000000)">
+                    <path d="M312.746942,635.665667 C342.795755,635.665667 375.470718,641.874839 402.954847,654.421766 C416.593426,660.647987 463.681881,688.842028 452.732938,710.684109 C448.31537,719.496729 431.51489,724.593355 423.521058,727.249019 C405.798351,733.136752 387.332026,736.758403 368.836609,739.086201 C349.245671,741.55188 329.886077,741.634649 310.180631,741.634649 C292.389277,741.772182 274.702257,738.728513 258.062494,732.345914 C235.229245,723.58765 191.996533,692.240765 212.255932,662.251693 C233.170218,631.293221 306.497162,621.021193 340.559557,623.102058 C369.728418,624.883978 439.625909,645.054895 444.325442,680.638624 C445.728867,691.26502 442.74171,700.834782 434.738991,708.135661 C406.670607,733.742444 340.753995,727.612232 305.738711,727.612232 C285.150548,727.426236 264.579746,724.714287 244.510468,720.151473 C210.20282,712.351521 184.271563,693.90334 222.539037,666.258949 C273.719197,629.286445 352.102877,620.558956 411.838688,637.850902 C435.325989,644.649857 461.201224,658.041509 453.667766,685.920104"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="vehicle-card" tabindex="0">
+                {% if block.settings.vehicle_image != blank %}
+                  {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
+                {% endif %}
+                <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 
@@ -197,109 +407,121 @@
     </div>
   {% endif %}
 
-  {%- comment -%} Single reusable SVG holder (your exact path) {%- endcomment -%}
-  <div id="circle-hover-holder" aria-hidden="true">
-    <svg viewBox="0 0 255 123" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(-202.000000, -621.000000)">
-        <path id="nav-highlight" d="M312.746942,635.665667 C342.795755,635.665667 375.470718,641.874839 402.954847,654.421766 C416.593426,660.647987 463.681881,688.842028 452.732938,710.684109 C448.31537,719.496729 431.51489,724.593355 423.521058,727.249019 C405.798351,733.136752 387.332026,736.758403 368.836609,739.086201 C349.245671,741.55188 329.886077,741.634649 310.180631,741.634649 C292.389277,741.772182 274.702257,738.728513 258.062494,732.345914 C235.229245,723.58765 191.996533,692.240765 212.255932,662.251693 C233.170218,631.293221 306.497162,621.021193 340.559557,623.102058 C369.728418,624.883978 439.625909,645.054895 444.325442,680.638624 C445.728867,691.26502 442.74171,700.834782 434.738991,708.135661 C406.670607,733.742444 340.753995,727.612232 305.738711,727.612232 C285.150548,727.426236 264.579746,724.714287 244.510468,720.151473 C210.20282,712.351521 184.271563,693.90334 222.539037,666.258949 C273.719197,629.286445 352.102877,620.558956 411.838688,637.850902 C435.325989,644.649857 461.201224,658.041509 453.667766,685.920104"/>
-      </g>
-    </svg>
-  </div>
 </div>
 
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
-(function () {
-  const holder = document.getElementById('circle-hover-holder');
-  if (!holder) return;
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Swiper for vehicle cards
+    const vehicleSwiper = new Swiper('.vehicle-swiper', {
+      // Default: 1 column, 2 rows for mobile/tablet vertical stacking
+      slidesPerView: 1,
+      spaceBetween: 20,
+      grid: {
+        rows: 2,
+        fill: 'row'
+      },
 
-  const svgPath = holder.querySelector('path');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Navigation arrows
+      navigation: {
+        nextEl: '.vehicle-swiper .swiper-button-next',
+        prevEl: '.vehicle-swiper .swiper-button-prev',
+      },
 
-  // Easing (easeInOutQuad), like the original snippet
-  function easeInOutQuad(t){ return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+      // Pagination
+      pagination: {
+        el: '.vehicle-swiper .swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+      },
 
-  function prepPath(path){
-    const len = path.getTotalLength();
-    path.style.strokeDasharray = `${len} ${len}`;
-    path.style.strokeDashoffset = `${len}`;
-    path.style.opacity = '1';
-    return len;
-  }
+      // Responsive breakpoints
+      breakpoints: {
+        // Mobile: 1 column, 2 rows (2 cards stacked vertically)
+        320: {
+          slidesPerView: 1,
+          grid: {
+            rows: 2
+          },
+          spaceBetween: 20,
+          centeredSlides: true,
+          navigation: {
+            enabled: true
+          }
+        },
 
-  function resetPath(path){
-    path.style.opacity = '0';
-    path.style.strokeDasharray = '';
-    path.style.strokeDashoffset = '';
-  }
+        // Tablet: 1 column, 2 rows (2 cards stacked vertically)
+        768: {
+          slidesPerView: 1,
+          grid: {
+            rows: 2
+          },
+          spaceBetween: 30,
+          centeredSlides: true,
+          navigation: {
+            enabled: true
+          }
+        },
 
-  function animatePath(path, duration){
-    const total = path.getTotalLength();
-    const start = performance.now();
-    function frame(now){
-      const t = Math.min(1, (now - start) / duration);
-      const k = easeInOutQuad(t);
-      path.style.strokeDashoffset = String((1 - k) * total);
-      if (t < 1) requestAnimationFrame(frame);
+        // Desktop - 4x2 grid
+        1024: {
+          slidesPerView: 4,
+          grid: {
+            rows: 2
+          },
+          spaceBetween: 50,
+          centeredSlides: false,
+          navigation: {
+            enabled: true
+          }
+        }
+      },
+
+      // Auto height
+      autoHeight: false,
+
+      // Disable loop for finite swiping
+      loop: false,
+
+      // Keyboard navigation
+      keyboard: {
+        enabled: true,
+      },
+
+      // Touch settings
+      touchRatio: 1,
+      touchAngle: 45,
+      grabCursor: true,
+
+      // Observer to watch for DOM changes (when blocks are added/removed)
+      observer: true,
+      observeParents: true,
+      observeSlideChildren: true,
+    });
+
+    // Function to update Swiper when content changes
+    function updateVehicleSwiper() {
+      if (vehicleSwiper) {
+        vehicleSwiper.update();
+        vehicleSwiper.updateSlides();
+        vehicleSwiper.updateProgress();
+        vehicleSwiper.updateSlidesClasses();
+      }
     }
-    requestAnimationFrame(frame);
-  }
 
-  // Position holder over a given card with an organic margin like the original (+50/+40)
-  function positionHolderOver(card){
-    const section = card.closest('.upgrades-by-vehicle') || document.body;
-    const sectionRect = section.getBoundingClientRect();
-    const cardRect = card.getBoundingClientRect();
+    // // Listen for section reloads (Shopify theme editor)
+    // document.addEventListener('shopify:section:load', function(event) {
+    //   if (event.detail.sectionId === '{{ section.id }}') {
+    //     setTimeout(updateVehicleSwiper, 100);
+    //   }
+    // });
 
-    const extraW = 50; // width + 50
-    const extraH = 40; // height + 40
-
-    const width = cardRect.width + extraW;
-    const height = cardRect.height + extraH;
-
-    const left = cardRect.left - sectionRect.left - (extraW / 2);
-    const top  = cardRect.top  - sectionRect.top  - (extraH / 2);
-
-    holder.style.width = `${width}px`;
-    holder.style.height = `${height}px`;
-    holder.style.left = `${left}px`;
-    holder.style.top = `${top}px`;
-  }
-
-  let animating = false;
-
-  function onEnter(card){
-    positionHolderOver(card);
-    holder.style.display = 'block';
-    if (prefersReduced || animating) return;
-    animating = true;
-    prepPath(svgPath);
-    animatePath(svgPath, 550);
-    setTimeout(() => { animating = false; }, 600);
-  }
-
-  function onLeave(){
-    holder.style.display = 'none';
-    resetPath(svgPath);
-  }
-
-  // Hook up all vehicle cards
-  document.querySelectorAll('.vehicle-card').forEach(card => {
-    card.addEventListener('mouseenter', () => onEnter(card));
-    card.addEventListener('mouseleave', onLeave);
-    // keyboard focus support
-    card.addEventListener('focusin', () => onEnter(card));
-    card.addEventListener('focusout', onLeave);
+    // // Listen for block additions/removals
+    // document.addEventListener('shopify:block:select', updateVehicleSwiper);
+    // document.addEventListener('shopify:block:deselect', updateVehicleSwiper);
   });
-
-  // Keep it aligned when scrolling/resizing while visible
-  ['scroll','resize'].forEach(evt => {
-    window.addEventListener(evt, () => {
-      if (holder.style.display !== 'block') return;
-      const active = document.querySelector('.vehicle-card:hover, .vehicle-card:focus-within');
-      if (active) positionHolderOver(active);
-    }, { passive: true });
-  });
-})();
 </script>
 
 {% schema %}

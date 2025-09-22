@@ -1,0 +1,176 @@
+<div class="ml-video-carousel">
+  <div class="text-container">
+    <div class="squiggly-arrow">{% render 'squiggly-arrow' %}</div>
+    <h2>{{ section.settings.heading }} {% render 'header-accent' %}</h2>
+    <p>{{ section.settings.description }}</p>
+    {% if section.settings.button_text and section.settings.button_link %}
+      <a href="{{ section.settings.button_link }}" class="ml-button-primary">{{ section.settings.button_text }} {% render 'arrow-right' %}</a>
+    {% endif %}
+  </div>
+  <div class="video-container">
+
+  </div>
+</div>
+
+{% if section.settings.background_image %}
+  <style>
+    .ml-video-carousel {
+      background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: {{ section.settings.background_color }};
+      color: {{ section.settings.section_text_color }};
+      padding: 155px 100px;
+    }
+
+    .ml-video-carousel .text-container {
+      text-align: {{ section.settings.heading_alignment }};
+      max-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: relative;
+    }
+
+    .ml-video-carousel .text-container .squiggly-arrow svg {
+      position: absolute;
+      top: -81px;
+      right: -1px;
+    }
+
+    .ml-video-carousel .text-container h2 {
+      font-size: 80px;
+      position: relative;
+      line-height: normal;
+    }
+
+    .ml-video-carousel .text-container h2 svg {
+      position: absolute;
+      top: -18px;
+      left: -46px;
+      width: 50px;
+    }
+
+    .ml-video-carousel .text-container h2,
+    .ml-video-carousel .text-container p {
+      color: {{ section.settings.section_text_color }};
+      margin: 0px;
+    }
+
+    .ml-video-carousel .video-container {
+      color: {{ section.settings.section_text_color }};
+    }
+
+    .ml-video-carousel .ml-button-primary {
+      margin: unset;
+      font-size: 18px !important;
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "ML Video Carousel",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ripped_edges",
+        "label": "Enable ripped edges"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Image"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_text_color",
+        "label": "Text color"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "Featured Blog Posts",
+        "label": "t:sections.collage.settings.heading.label"
+      },
+      {
+        "type": "text_alignment",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h3",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__3.label"
+          }
+        ],
+        "default": "h2",
+        "label": "t:sections.all.heading_size.label"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "default": "<p>Discover our latest insights, tips, and stories</p>",
+        "label": "t:sections.featured-collection.settings.description.label"
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "options": [
+        {
+          "value": "foreground",
+          "label": "t:settings_schema.colors.settings.text.label"
+        },
+        {
+          "value": "foreground-secondary",
+          "label": "t:settings_schema.colors.settings.text_secondary.label"
+        },
+        {
+          "value": "accent",
+          "label": "t:settings_schema.colors.settings.accent_color.label"
+        }
+        ],
+        "default": "foreground",
+        "label": "Description color"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "ML Video Carousel"
+      }
+    ]
+  }
+{% endschema %}

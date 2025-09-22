@@ -4491,7 +4491,9 @@ h6,
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8rem;
+  width: 100%;
+  margin: auto;
+  padding: 0px 45px;
 }
 
 .section-apps .page-width {
