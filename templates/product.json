@@ -144,61 +144,6 @@
         "padding_bottom": 140
       }
     },
-    "17560795582068936a": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_85adf48_gRwe8t": {
-          "type": "ai_gen_block_85adf48",
-          "settings": {
-            "heading": "Helpful Videos",
-            "subheading": "Follow along with our ML Toy pros!",
-            "view_all_text": "View All Videos",
-            "view_all_url": "",
-            "video_1_url": "https:\/\/www.youtube.com\/watch?v=Zv4nFFiMej4&t=2s",
-            "video_1_title": "How and Why to Break-In MLToys Performance Ride-on Motors",
-            "video_1_description": "",
-            "video_2_url": "https:\/\/www.youtube.com\/watch?v=BXxpwDDxS9s",
-            "video_2_title": "How and Why to Break-In MLToys Performance Ride-on Motors",
-            "video_2_description": "",
-            "video_3_url": "",
-            "video_3_title": "",
-            "video_3_description": "",
-            "video_4_url": "",
-            "video_4_title": "",
-            "video_4_description": "",
-            "video_5_url": "",
-            "video_5_title": "",
-            "video_5_description": "",
-            "text_alignment": "center",
-            "card_width": 320,
-            "card_gap": 20,
-            "thumbnail_height": 180,
-            "heading_size": 32,
-            "subheading_size": 16,
-            "background_color": "#ffffff",
-            "heading_color": "#1d1d1f",
-            "subheading_color": "#5d5d5d",
-            "card_background_color": "#ffffff",
-            "card_text_color": "#1d1d1f",
-            "card_text_secondary_color": "#5d5d5d",
-            "button_color": "#df1d37",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#ff7151",
-            "nav_button_color": "#ffffff",
-            "nav_button_text_color": "#1d1d1f",
-            "nav_button_hover_color": "#ffffff",
-            "card_border_radius": 12,
-            "button_border_radius": 8
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_85adf48_gRwe8t"
-      ],
-      "disabled": true,
-      "settings": {}
-    },
     "175607880400077e24": {
       "type": "apps",
       "blocks": {
@@ -374,7 +319,6 @@
   },
   "order": [
     "main",
-    "17560795582068936a",
     "175607880400077e24",
     "help_and_feedback_mFaiKM",
     "related_products",

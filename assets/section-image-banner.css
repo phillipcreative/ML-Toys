@@ -1101,3 +1101,8 @@
   max-width: 100% !important;
   justify-content: unset !important;
 }
+
+.banner__heading {
+  margin-bottom: 0;
+  max-width: 310px;
+}

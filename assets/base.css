@@ -4498,8 +4498,9 @@ h6,
 
 .section-apps .page-width {
   max-width: 120rem;
-  padding: 4rem 1rem;
-  margin-top: 6rem;
+  padding: 0rem 1rem 4rem 1rem;
+  /* margin-top: 6rem; */
+  padding-top: 6rem;
 }
 
 .section-apps .section-heading,

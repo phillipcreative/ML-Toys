@@ -153,7 +153,7 @@ slideshow-banner .slideshow.banner {
   .slideshow-banner__item-wrapper--bottom-left {
     align-items: flex-end;
   }
-	
+
 	@media screen and (min-width: 990px){
 		.slideshow-banner__item-wrapper--bottom-left .slideshow__text-wrapper.banner--desktop-transparent,
 		.slideshow-banner__item-wrapper--top-left .slideshow__text-wrapper.banner--desktop-transparent,
@@ -469,7 +469,7 @@ slideshow-banner:not(.page-width) .slider-buttons {
 .js .swiper-initialized .slideshow-banner__item :is(.banner__heading, .banner__text, .banner__buttons) {
   opacity: 0;
   transform: translateY(2.5rem);
-	will-change: transform; 
+	will-change: transform;
   transition: opacity 0.5s ease, transform 0.5s ease;
   transition-delay: 0.4s;
 }
