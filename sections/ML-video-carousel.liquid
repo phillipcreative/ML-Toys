@@ -1,3 +1,7 @@
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <div class="ml-video-carousel">
   <div class="text-container">
     <div class="squiggly-arrow">{% render 'squiggly-arrow' %}</div>
@@ -8,7 +12,90 @@
     {% endif %}
   </div>
   <div class="video-container">
+    <div class="swiper video-carousel-swiper">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign video_id = block.settings.video.id | default: block.settings.video_url.id
+            assign video_alt = block.settings.video.alt | default: block.settings.description
+            assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+            assign poster = block.settings.video.preview_image | default: block.settings.cover_image
 
+            if block.settings.video != null
+              assign ratio_diff = block.settings.video.aspect_ratio | minus: poster.aspect_ratio | abs
+              if ratio_diff < 0.01 and ratio_diff > 0
+                assign fix_ratio = true
+              endif
+            endif
+          -%}
+
+          <div class="swiper-slide video-carousel-item" {{ block.shopify_attributes }}>
+            <deferred-media class="video-section__media deferred-media no-js-hidden gradient global-media-settings{% if fix_ratio %} media-fit-cover{% endif %}"
+              data-media-id="{{ video_id }}" {% if poster != null %} style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;" {% endif %}>
+              <button id="Deferred-Poster-Modal-{{ video_id }}-{{ forloop.index }}" class="video-section__poster media deferred-media__poster media--landscape" type="button" aria-label="{{ alt }}">
+                {%- if poster != null -%}
+                  {{
+                    poster
+                    | image_url: width: 1200
+                    | image_tag: sizes: '(min-width: 750px) 400px, 300px', widths: '300, 400, 600, 800, 1200', alt: alt
+                  }}
+                {%- else -%}
+                  {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                {%- endif -%}
+                <span class="deferred-media__poster-button motion-reduce">
+                  {%- render 'icon-play' -%}
+                </span>
+              </button>
+
+              <template>
+                {%- if block.settings.video == null and block.settings.video_url != null -%}
+                  {%- liquid
+                    assign loop = ''
+                    if block.settings.enable_video_looping
+                      assign loop = '&loop=1&playlist=' | append: video_id
+                    endif
+                  -%}
+                  {%- if block.settings.video_url.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+                      class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ block.settings.description | escape }}"></iframe>
+                  {%- else -%}
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                      class="js-vimeo"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      title="{{ block.settings.description | escape }}"
+                    ></iframe>
+                  {%- endif -%}
+                {%- else -%}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      image_size: '600x',
+                      autoplay: true,
+                      loop: block.settings.enable_video_looping,
+                      controls: true,
+                      muted: false
+                  }}
+                {%- endif -%}
+              </template>
+            </deferred-media>
+            {%- if block.settings.video_title -%}
+              <h3 class="video-carousel-item-title">{{ block.settings.video_title }}</h3>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.blocks.size > 1 -%}
+        <!-- Swiper navigation buttons -->
+        <div class="swiper-button-next video-carousel-next"></div>
+        <div class="swiper-button-prev video-carousel-prev"></div>
+
+        <!-- Swiper pagination -->
+        <div class="swiper-pagination"></div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
 
@@ -22,6 +109,9 @@
       background-color: {{ section.settings.background_color }};
       color: {{ section.settings.section_text_color }};
       padding: 155px 100px;
+      display: flex;
+      align-items: center;
+      gap: 50px;
     }
 
     .ml-video-carousel .text-container {
@@ -31,6 +121,7 @@
       flex-direction: column;
       gap: 15px;
       position: relative;
+      width: 30%;
     }
 
     .ml-video-carousel .text-container .squiggly-arrow svg {
@@ -60,14 +151,223 @@
 
     .ml-video-carousel .video-container {
       color: {{ section.settings.section_text_color }};
+      /* flex: 1; */
+      width: 70%;
+      margin-left: 50px;
     }
+
+    .video-carousel-swiper {
+      position: relative;
+      overflow: visible;
+      border-radius: 12px;
+    }
+
+    .video-carousel-item {
+      width: 300px;
+      flex-shrink: 0;
+    }
+
+    .video-carousel-item .video-section__media {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .video-carousel-item-title {
+      margin: 15px 0 0 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: {{ section.settings.section_text_color }};
+      text-align: center;
+    }
+
+    /* Custom Swiper navigation buttons */
+    .video-carousel-swiper .swiper-button-next,
+    .video-carousel-swiper .swiper-button-prev {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-top: -22px;
+      transition: all 0.3s ease;
+    }
+
+    .video-carousel-swiper .swiper-button-next:after,
+    .video-carousel-swiper .swiper-button-prev:after {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .video-carousel-swiper .swiper-button-next:hover,
+    .video-carousel-swiper .swiper-button-prev:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+
+    .video-carousel-swiper .swiper-button-prev {
+      left: -22px;
+    }
+
+    .video-carousel-swiper .swiper-button-next {
+      right: -22px;
+    }
+
+    /* Swiper pagination */
+    .video-carousel-swiper .swiper-pagination {
+      bottom: -40px;
+    }
+
+    .video-carousel-swiper .swiper-pagination-bullet {
+      background: {{ section.settings.section_text_color }};
+      opacity: 0.5;
+    }
+
+    .video-carousel-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+
+    /* @media screen and (max-width: 1200px) {
+      .ml-video-carousel {
+        flex-direction: column;
+        padding: 80px 50px;
+      }
+
+      .ml-video-carousel .video-container {
+        margin-left: 0;
+        margin-top: 40px;
+        width: 100%;
+      }
+
+      .video-carousel-item {
+        width: 280px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .ml-video-carousel {
+        padding: 60px 20px;
+      }
+
+      .video-carousel-item {
+        width: 250px;
+      }
+
+      .video-carousel-swiper .swiper-button-next,
+      .video-carousel-swiper .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+      }
+
+      .video-carousel-swiper .swiper-button-next:after,
+      .video-carousel-swiper .swiper-button-prev:after {
+        font-size: 14px;
+      }
+
+      .video-carousel-swiper .swiper-button-prev {
+        left: -18px;
+      }
+
+      .video-carousel-swiper .swiper-button-next {
+        right: -18px;
+      }
+    } */
 
     .ml-video-carousel .ml-button-primary {
       margin: unset;
       font-size: 18px !important;
     }
+
+    .ml-video-carousel .deferred-media__poster-button {
+      background-color: #001429;
+    }
+
+    .ml-video-carousel .deferred-media__poster-button svg path {
+      fill: #fff !important;
+    }
+
+    .ml-video-carousel .video-carousel-item .video-section__media {
+      background-color: unset;
+    }
   </style>
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const swiperContainer = document.querySelector('.video-carousel-swiper');
+  if (!swiperContainer) return;
+
+  const swiper = new Swiper('.video-carousel-swiper', {
+    // Swiper parameters - show multiple slides
+    slidesPerView: 2.2,
+    spaceBetween: 20,
+    centeredSlides: false,
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.video-carousel-swiper .swiper-button-next',
+      prevEl: '.video-carousel-swiper .swiper-button-prev',
+    },
+
+    // Pagination
+    pagination: {
+      el: '.video-carousel-swiper .swiper-pagination',
+      clickable: true,
+    },
+
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+      },
+      // when window width is >= 480px
+      480: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+        centeredSlides: false,
+      },
+      // when window width is >= 768px
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      // when window width is >= 1024px
+      1024: {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        centeredSlides: false,
+      }
+    },
+
+    // Enable keyboard control
+    keyboard: {
+      enabled: true,
+    },
+
+    // Enable mouse wheel control
+    mousewheel: {
+      enabled: false,
+    },
+
+    // Loop mode
+    loop: false,
+
+    // Auto height
+    autoHeight: false,
+
+    // Speed
+    speed: 300,
+
+    // Allow slide to go beyond container
+    watchOverflow: true,
+  });
+});
+</script>
 
 {% schema %}
   {
@@ -167,9 +467,61 @@
         "label": "Button text"
       }
     ],
+    "blocks": [
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "text",
+            "id": "video_title",
+            "label": "Video Title"
+          },
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video File"
+          },
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "accept": ["youtube", "vimeo"],
+            "label": "Video URL",
+            "info": "Use YouTube or Vimeo URL as alternative to video file"
+          },
+          {
+            "type": "image_picker",
+            "id": "cover_image",
+            "label": "Cover Image"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Video Description"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_video_looping",
+            "label": "Enable video looping",
+            "default": false
+          }
+        ]
+      }
+    ],
     "presets": [
       {
-        "name": "ML Video Carousel"
+        "name": "ML Video Carousel",
+        "blocks": [
+          {
+            "type": "video"
+          },
+          {
+            "type": "video"
+          },
+          {
+            "type": "video"
+          }
+        ]
       }
     ]
   }
