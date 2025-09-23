@@ -379,6 +379,118 @@
     },
     "image_hubspot_banner_NDAMET": {
       "type": "image-hubspot-banner",
+      "blocks": {
+        "hotspot_item_HJpAKW": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Amber-Warning-Lights-2_d6440ddb-1ad2-4e44-98d7-76257fb5c8eb.jpg",
+            "heading": "Lighting",
+            "link": "https://www.mltoys.com/collections/power-wheels-lighting-upgrades",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 23,
+            "vertical_position": 50,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        },
+        "hotspot_item_LaUdzM": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/B7659-2459-x2-2.jpg",
+            "heading": "Tires",
+            "link": "https://www.mltoys.com/collections/tires-wheels",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 40,
+            "vertical_position": 80,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        },
+        "hotspot_item_Q87X3e": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/CLK46-9809-2.jpg",
+            "heading": "Bumpers",
+            "link": "https://www.mltoys.com/collections/bumpers",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 23,
+            "vertical_position": 76,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        },
+        "hotspot_item_JJ8kww": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/3900-3803-2.jpg",
+            "heading": "Doors",
+            "link": "https://mltoys.com/collections/doors",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 82,
+            "vertical_position": 52,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        },
+        "hotspot_item_F94GKH": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/collection-steering-wheels.jpg",
+            "heading": "Steering Wheels",
+            "link": "https://mltoys.com/collections/steering-wheels",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 53,
+            "vertical_position": 20,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        },
+        "hotspot_item_brM6kn": {
+          "type": "hotspot_item",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/collection-seats.jpg",
+            "heading": "Seats",
+            "link": "https://mltoys.com/collections/seats",
+            "bullet_color": "",
+            "bullet_bg": "",
+            "horizontal_position": 68,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "bubble_position": "bubble-bottom",
+            "hide_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_item_HJpAKW",
+        "hotspot_item_LaUdzM",
+        "hotspot_item_Q87X3e",
+        "hotspot_item_JJ8kww",
+        "hotspot_item_F94GKH",
+        "hotspot_item_brM6kn"
+      ],
       "name": "Hotspot banner",
       "settings": {
         "heading": "Find What You Need",

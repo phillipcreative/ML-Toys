@@ -66,8 +66,8 @@
             {{
               section.settings.image
               | image_url: width: 1200
-              | image_tag: 
-                loading: 'lazy', 
+              | image_tag:
+                loading: 'lazy',
                 width: section.settings.image.width,
                 sizes: sizes,
                 widths: '320, 360, 375, 400, 420, 450, 550, 650, 750, 850, 950, 1024, 1100, 1300, 1440, 1650, 1800, 1920, 2000, 2400, 2600, 3000, 3200'
@@ -100,7 +100,7 @@
 										left: 50%;
 									}
 								}
-							</style>						
+							</style>
 
               <div class="hotspot-item hotspot-item--{{ block.settings.style }} item-{{ forloop.index }} color-{{ block.settings.color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-long{% endif %}{% if block.settings.hide_mobile %} small-hide{% endif %}" {{ block.shopify_attributes }}{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %} tabindex="0">
 
@@ -119,8 +119,8 @@
                   <div class="hotspot-item-icon with-icon">
                     <span>
                       {{ block.settings.bullet_icon | image_url: width: 35
-                        | image_tag: 
-                          loading: 'lazy', 
+                        | image_tag:
+                          loading: 'lazy',
                           width: block.settings.bullet_icon.width,
                           height: block.settings.bullet_icon.height
                       }}
@@ -130,7 +130,7 @@
                   <div class="hotspot-item-icon">
                     <span> </span>
                   </div>
-                {% endif %} 
+                {% endif %}
 
                 <div class="hotspot-bubble {{ block.settings.bubble_position }}">
                   <div class="hotspot-bubble--info">
@@ -139,12 +139,12 @@
 
                     {% if block.settings.product.featured_image != blank %}
                       <a class="bubble-image" href="{{ block.settings.product.url }}">
-                        <img src="{{ block.settings.product.featured_image | image_url: width: 200 }}" 
+                        <img src="{{ block.settings.product.featured_image | image_url: width: 200 }}"
                         alt="{{ block.settings.product.featured_image.alt | escape }}"
                         loading="lazy" width="80" height="100">
 
                         {%- if block.settings.product.media[1] != null -%}
-                          <img src="{{ block.settings.product.media[1] | image_url: width: 200 }}" 
+                          <img src="{{ block.settings.product.media[1] | image_url: width: 200 }}"
                           alt="{{ block.settings.product.media[1].alt | escape }}"
                           loading="lazy" width="80" height="100">
                         {%- endif -%}
@@ -158,16 +158,16 @@
                             {{- block.settings.product.title | escape -}}
                           {% else %}
                             {{- 'onboarding.product_title' | t -}}
-                          {% endif %} 
+                          {% endif %}
                         </h3>
                       </a>
 
 											{% if block.settings.style == 'detailed' %}
 												{% if block.settings.product.price != blank  %}
-													{% render 'price', 
-														product: block.settings.product, 
-														price_class: 'small-hide medium-hide', 
-														show_compare_at_price: true 
+													{% render 'price',
+														product: block.settings.product,
+														price_class: 'small-hide medium-hide',
+														show_compare_at_price: true
 													%}
 												{% endif %}
 
@@ -187,7 +187,7 @@
 																<span>
 																	{{ 'products.product.choose_options' | t }}
 																</span>
-			
+
 																<div class="loading-overlay__spinner hidden">
 																	<svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 																		<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
@@ -253,11 +253,11 @@
 										  {% if block.settings.bullet_bg != blank and block.settings.bullet_bg != 'rgba(0,0,0,0)' %}
 											  --bullet-bg: {{ block.settings.bullet_bg.red }}, {{ block.settings.bullet_bg.green }}, {{ block.settings.bullet_bg.blue }};
 										  {% endif %}
-  
+
 										  {% if block.settings.bullet_color != blank and block.settings.bullet_color != 'rgba(0,0,0,0)' %}
 											  --bullet-color: {{ block.settings.bullet_color.red }}, {{ block.settings.bullet_color.green }}, {{ block.settings.bullet_color.blue }};
 										  {% endif %}
-  
+
 					  top: {{ block.settings.vertical_position }}%;
 					  left: {{ block.settings.horizontal_position }}%;
 					}
@@ -268,7 +268,7 @@
 					  }
 					}
 				  </style>
-  
+
 				  {% if block.settings.vertical_position_mobile != 30 or block.settings.horizontal_position_mobile != 30 %}
 					<style>
 					  @media screen and (max-width: 749px) {
@@ -279,14 +279,18 @@
 					  }
 					</style>
 				  {% endif %}
-              <div class="hotspot-item item-{{ forloop.index }} color-{{ block.settings.color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-long{% endif %}{% if block.settings.hide_mobile %} small-hide{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %} {{ block.shopify_attributes }} tabindex="0">
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="hotspot-item hotspot-item--link item-{{ forloop.index }} color-{{ block.settings.color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-long{% endif %}{% if block.settings.hide_mobile %} small-hide{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %} {{ block.shopify_attributes }} tabindex="0">
+              {% else %}
+                <div class="hotspot-item item-{{ forloop.index }} color-{{ block.settings.color_scheme }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-long{% endif %}{% if block.settings.hide_mobile %} small-hide{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %} {{ block.shopify_attributes }} tabindex="0">
+              {% endif %}
 
                 {% if block.settings.bullet_icon != blank %}
                   <div class="hotspot-item-icon with-icon">
                     <span>
                       {{ block.settings.bullet_icon | image_url: width: 35
-                        | image_tag: 
-                          loading: 'lazy', 
+                        | image_tag:
+                          loading: 'lazy',
                           width: block.settings.bullet_icon.width,
                           height: block.settings.bullet_icon.height
                       }}
@@ -310,10 +314,14 @@
                     <h3 class="bubble-title inline-richtext h6">
                       {{ block.settings.heading }}
                     </h3>
-                      
+
                   </div>
                 </div>
-              </div>
+              {% if block.settings.link != blank %}
+                </a>
+              {% else %}
+                </div>
+              {% endif %}
 
             {%- endcase -%}
           {%- endfor -%}
@@ -489,14 +497,14 @@
 					"options": [
 						{
 							"value": "default",
-							"label": "Default",
+							"label": "Default"
 						},
 						{
 							"value": "detailed",
 							"label": "Detailed"
 						}
 					],
-					"default": "default",
+					"default": "default"
 				},
         {
           "type": "image_picker",
@@ -606,6 +614,12 @@
           "id": "heading",
           "default": "Hotspot item",
           "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link URL",
+          "info": "Optional: Add a URL to make the hotspot clickable"
         },
         {
           "type": "image_picker",

@@ -8,90 +8,67 @@
  * ------------------------------------------------------------
  */
  {
-  "name": "t:sections.header.name",
-  "type": "header",
+  "name": "t:sections.footer.name",
+  "type": "footer",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "footer": {
+      "type": "footer",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Upgrade Your Power Wheels and Ride-On Toys!",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "show_line_separator": false,
-        "announcement_menu": "",
-        "show_social": false,
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "font_weight": "fw-400",
-        "font_size": "small"
-      }
-    },
-    "header": {
-      "type": "header",
-      "blocks": {
-        "link_list_4TGqRe": {
+        "footer-0": {
           "type": "link_list",
           "settings": {
-            "menu_drawer_title": "Catalog",
-            "menu_drawer": "main-menu",
-            "icon": "shopify://shop_images/category_1.svg",
-            "icon_width": 20,
-            "icon_position": "top"
+            "heading": "buy-now",
+            "menu": "buy-now"
           }
         },
-        "item_icon_fpypKt": {
-          "type": "item_icon",
+        "footer-1": {
+          "type": "link_list",
           "settings": {
-            "menu_icon_title": "Start Here",
-            "icon": "shopify://shop_images/icon-help_1.svg",
-            "icon_width": 20,
-            "icon_position": "top"
+            "heading": "support",
+            "menu": "support"
+          }
+        },
+        "89f2b72b-8551-4b3c-a430-1719424d7f61": {
+          "type": "link_list",
+          "settings": {
+            "heading": "more",
+            "menu": "more"
           }
         }
       },
       "block_order": [
-        "link_list_4TGqRe",
-        "item_icon_fpypKt"
+        "footer-0",
+        "footer-1",
+        "89f2b72b-8551-4b3c-a430-1719424d7f61"
       ],
       "settings": {
-        "logo_position": "middle-left",
-        "menu": "main-menu-copy",
-        "menu_font_weight": "500",
-        "menu_type_desktop": "mega",
-        "show_mm_image": false,
-        "image_ratio": "landscape",
-        "drawer_product": "",
-        "sticky_header_type": "reduce-logo-size",
-        "show_line_separator": false,
-        "show_shadow": false,
-        "round_borders": true,
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
+        "heading_size": "h5",
+        "logo": "shopify://shop_images/ml-toy-logo.png",
+        "logo_width": 190,
+        "show_social": true,
+        "social_icon_style": "default",
+        "social_label": "",
+        "newsletter_enable": true,
+        "newsletter_enable_top": true,
+        "newsletter_title": "Join Our Community!",
+        "newsletter_description": "<p>Be the first to find out about new products and exclusive offer</p>",
+        "enable_follow_on_shop": false,
         "enable_country_selector": false,
-        "show_image": false,
-        "show_name": false,
-        "show_currency": false,
         "enable_language_selector": false,
-        "mobile_logo_position": "left",
-        "padding_top": 16,
-        "padding_bottom": 16
+        "footer_subtext": "",
+        "payment_enable": false,
+        "policy_color_scheme": "",
+        "show_policy": false,
+        "policy_padding_top": 20,
+        "policy_padding_bottom": 20,
+        "margin_top": 0,
+        "padding_top": 80,
+        "padding_bottom": 50
       }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "footer"
   ]
 }

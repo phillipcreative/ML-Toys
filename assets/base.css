@@ -4441,7 +4441,11 @@ details-disclosure>details {
   background: inherit !important;
 }
 
-/* Digmo Updates Font Reset */
+/*****************
+
+DIGMO UPDATES BEGIN
+
+*****************/
 
 .h0,
 h1,
@@ -4460,6 +4464,26 @@ h6,
   text-transform: uppercase !important;
   font-weight: normal !important;
   line-height: normal !important;
+}
+
+.header.page-width {
+  max-width: 1950px !important;
+}
+
+@media only screen and (max-width: 1080px) {
+  .inline-header-search .header__search {
+    justify-self: unset;
+  }
+
+  .header__icon--cart {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .header.inline-header-search .header__heading-link {
+    max-width: 125px;
+  }
 }
 
 .ml-button-primary {
@@ -4756,10 +4780,6 @@ h6,
     text-align: center;
   }
 
-  /* .upgrades-by-vehicle__header {
-    margin-bottom: 40px;
-  } */
-
   .upgrades-by-vehicle__title-wrapper {
     display: flex;
     justify-content: center;
@@ -4870,10 +4890,9 @@ h6,
     color: #fff;
   }
 
-  /* DIGMO MEDIA QUERIES */
-.compare-modal {
-  display: none !important;
-}
+  .compare-modal {
+    display: none !important;
+  }
 
 
 @media only screen and (max-width: 450px) {
@@ -4915,3 +4934,25 @@ h6,
 .image-hotspot-wrapper .section-heading .section-title+.section-description {
   margin-top: 0px !important;
 }
+
+
+.hotspot-bubble .bubble-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  text-transform: capitalize !important;
+  text-align: center !important;
+}
+
+/*footer newsletter  */
+
+.footer-block__newsletter h2{
+  font-size: 35px !important;
+}
+
+
+/*****************
+
+DIGMO UPDATES END
+
+*****************/

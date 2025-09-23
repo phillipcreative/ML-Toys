@@ -1072,7 +1072,11 @@
 	transform: translate(-50%, -50%);
 }
 
-/* DIGMO Updates */
+/*****************
+
+DIGMO UPDATES BEGIN
+
+*****************/
 
 .banner__buttons a {
   background-color: #fff;
@@ -1106,7 +1110,8 @@
 }
 
 .banner-filter .banner__content {
-  max-width: 100% !important;
+  /* max-width: 100% !important; */
+  max-width: 1950px !important;
   justify-content: unset !important;
 }
 
@@ -1156,3 +1161,10 @@
     margin-top: 1rem !important;
   }
 }
+
+
+/******************************
+
+      DIGMO UPDATES END
+
+******************************/

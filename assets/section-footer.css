@@ -191,7 +191,7 @@
     row-gap: 1.5rem;
     justify-content: center;
   }
-  
+
   .footer__content-bottom.scroll-trigger.animate--slide-in {
     animation: none;
     opacity: 1;
@@ -261,7 +261,7 @@
 
 	.footer__content-bottom-wrapper:has(.footer__localization:empty)   .footer__column--info {
 		align-items: end;
-	} 
+	}
 }
 
 .footer-block:only-child:last-child {
@@ -332,6 +332,7 @@
   margin-bottom: 1rem;
   margin-top: 0;
   text-align: left;
+  font-size: 30px;
 }
 
 .footer-block__newsletter .footer-block__heading {
@@ -583,7 +584,8 @@
 @media screen and (min-width: 750px) {
   .footer-block__details-content .list-menu__item--link {
     display: inline-block;
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
+    font-size: 14px;
   }
 
   .footer-block__details-content > :first-child .list-menu__item--link {
