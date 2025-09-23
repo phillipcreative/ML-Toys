@@ -4471,7 +4471,7 @@ h6,
 }
 
 .ml-button-primary:hover {
-  background-color: #DF1D37 !important;
+  background-color: #001429 !important;
   color: #fff !important;
   border-color: #001429 !important;
 }
@@ -4727,9 +4727,9 @@ h6,
     text-align: center;
   }
 
-  .upgrades-by-vehicle__header {
+  /* .upgrades-by-vehicle__header {
     margin-bottom: 40px;
-  }
+  } */
 
   .upgrades-by-vehicle__title-wrapper {
     display: flex;

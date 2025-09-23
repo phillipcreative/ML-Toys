@@ -5,6 +5,7 @@
 
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{{ 'upgrade-by-vehicle.css' | asset_url | stylesheet_tag }}
 
 <style>
   .upgrades-by-vehicle {
@@ -17,342 +18,6 @@
       background-position: center;
       background-repeat: no-repeat;
     {% endif %}
-  }
-
-  .upgrades-by-vehicle__header { margin-bottom: 40px; }
-
-  .upgrades-by-vehicle__title-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .upgrades-by-vehicle__title {
-    font-size: 55px;
-    font-weight: bold;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
-  .upgrades-by-vehicle__icon { width: 30px; height: auto; }
-
-  .upgrades-by-vehicle__subheading {
-    font-size: 18px;
-    color: #001429;
-    margin: 0;
-  }
-
-  .upgrades-by-vehicle__grid-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* Swiper container styles */
-  .vehicle-swiper {
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 100px;
-    padding: 0 20px;
-    position: relative;
-    overflow: visible;
-  }
-
-  .vehicle-swiper .swiper-slide {
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 60px;
-  }
-
-  .vehicle-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
-    row-gap: 95px;
-    max-width: 1015px;
-    margin: 0 auto;
-    margin-top: 150px;
-    position: relative;
-    justify-items: center;
-  }
-
-  .vehicle-card {
-    height: 115px;
-    width: 215px;
-    border: 2px solid #001429;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    background: #fff;
-    position: relative;
-    z-index: 2; /* above the SVG (z:0) */
-  }
-
-  .vehicle-card:hover {
-    box-shadow: -5px 5px #001429;
-    transform: translateY(-2px);
-  }
-
-  .vehicle-card__image {
-    height: auto;
-    margin-bottom: 15px;
-    position: absolute;
-    top: -85px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    max-width: 190px;
-    z-index: 3; /* keep above card and SVG */
-  }
-
-  .vehicle-card__title {
-    font-size: 16px;
-    font-weight: 900;
-    color: #001429;
-    margin: 0;
-    position: relative;
-    z-index: 3; /* keep above card and SVG */
-  }
-
-  .view-all-button-wrapper { margin-top: 40px; }
-
-  .view-all-button {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid #000;
-    border-radius: 30px;
-    color: #000;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .view-all-button:hover { background-color: #000; color: #fff; }
-
-  /* --- Static SVG behind each card --- */
-  .vehicle-card-wrapper {
-    position: relative;
-    display: grid;
-    place-items: center;
-  }
-
-  .vehicle-card__svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    pointer-events: none;
-    z-index: 0; /* behind the card */
-  }
-
-  .vehicle-card__svg svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .vehicle-card__svg path {
-    fill: none;
-    stroke: #001429;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    transition: opacity 0.3s ease, stroke-dashoffset 0.6s ease;
-  }
-
-  .vehicle-card-wrapper:hover .vehicle-card__svg path {
-    opacity: 1;
-    stroke-dashoffset: 0;
-  }
-
-  /* Swiper navigation styles */
-  .vehicle-swiper .swiper-button-next,
-  .vehicle-swiper .swiper-button-prev {
-    color: #001429;
-    background: rgba(255, 255, 255, 0.9);
-    width: 50px;
-    height: 50px;
-    margin-top: -25px;
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #001429;
-    transition: all 0.3s ease;
-  }
-
-  .vehicle-swiper .swiper-button-next:hover,
-  .vehicle-swiper .swiper-button-prev:hover {
-    background: #001429;
-    color: #fff;
-    transform: scale(1.1);
-  }
-
-  .vehicle-swiper .swiper-button-next:after,
-  .vehicle-swiper .swiper-button-prev:after {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  /* Position navigation buttons */
-  .vehicle-swiper .swiper-button-next {
-    right: -25px;
-  }
-
-  .vehicle-swiper .swiper-button-prev {
-    left: -25px;
-  }
-
-  .vehicle-swiper .swiper-pagination-bullet {
-    background: #001429;
-    opacity: 0.3;
-  }
-
-  .vehicle-swiper .swiper-pagination-bullet-active {
-    opacity: 1;
-  }
-
-  /* Mobile pagination positioning */
-  .vehicle-swiper .swiper-pagination {
-    position: relative;
-    margin-top: 30px;
-    bottom: auto;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 1200px) {
-    .vehicle-swiper .swiper-button-next {
-      right: 10px;
-    }
-
-    .vehicle-swiper .swiper-button-prev {
-      left: 10px;
-    }
-
-    .vehicle-swiper {
-      overflow: hidden;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .vehicle-swiper {
-      margin-top: 100px;
-      overflow: visible;
-    }
-
-    .vehicle-swiper .swiper-slide {
-      margin-bottom: 60px; /* Increased for image space */
-      padding-top: 70px; /* Add padding to prevent image cutoff */
-    }
-
-    /* Adjust vehicle card for tablet */
-    .vehicle-card {
-      height: 120px;
-      width: 210px;
-      margin: 0 auto;
-    }
-
-    /* Adjust image positioning for tablet */
-    .vehicle-card__image {
-      top: -80px; /* Slightly reduced */
-      max-width: 170px; /* Slightly smaller */
-      left: 50%;
-      transform: translateX(-50%);
-      right: auto;
-    }
-
-    .vehicle-swiper .swiper-button-next,
-    .vehicle-swiper .swiper-button-prev {
-      width: 40px;
-      height: 40px;
-      margin-top: -20px;
-    }
-
-    .vehicle-swiper .swiper-button-next {
-      right: 5px;
-    }
-
-    .vehicle-swiper .swiper-button-prev {
-      left: 5px;
-    }
-
-    .vehicle-swiper .swiper-pagination {
-      margin-top: 40px;
-    }
-
-    .upgrades-by-vehicle__title {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 480px) {
-
-    .upgrades-by-vehicle {
-      overflow: hidden;
-    }
-    .vehicle-swiper {
-      margin-top: 10px;
-      padding: 0 20px;
-      overflow: visible;
-    }
-
-    .vehicle-swiper .swiper-slide {
-      margin-bottom: 0px; /* Increased to accommodate image overflow */
-      padding-top: 80px; /* Add padding to prevent image cutoff */
-    }
-
-    /* Adjust vehicle card for mobile */
-    .vehicle-card {
-      height: 120px;
-      width: 200px;
-      margin: 0 auto;
-    }
-
-    /* Fix image positioning for mobile */
-    .vehicle-card__image {
-      top: -75px; /* Reduced from -85px */
-      max-width: 160px; /* Slightly smaller for mobile */
-      left: 50%;
-      transform: translateX(-50%);
-      right: auto;
-    }
-
-    /* Show navigation on mobile but smaller */
-    .vehicle-swiper .swiper-button-next,
-    .vehicle-swiper .swiper-button-prev {
-      width: 35px;
-      height: 35px;
-      margin-top: -17px;
-      display: flex;
-    }
-
-    .vehicle-swiper .swiper-button-next:after,
-    .vehicle-swiper .swiper-button-prev:after {
-      font-size: 14px;
-    }
-
-    .vehicle-swiper .swiper-pagination {
-      margin-top: 30px;
-    }
-
-    .upgrades-by-vehicle__title {
-      font-size: 45px;
-    }
-
-    .upgrades-by-vehicle__header {
-      margin-bottom: 20px;
-    }
   }
 </style>
 
@@ -426,7 +91,6 @@
     const vehicleSwiper = new Swiper('.vehicle-swiper', {
       // Default: 1 column, 2 rows for mobile/tablet vertical stacking
       slidesPerView: 1,
-      spaceBetween: 20,
       grid: {
         rows: 2,
         fill: 'row'
@@ -436,55 +100,61 @@
       navigation: {
         nextEl: '.vehicle-swiper .swiper-button-next',
         prevEl: '.vehicle-swiper .swiper-button-prev',
+        disabledClass: 'swiper-button-disabled',
       },
 
       // Pagination
-      pagination: {
-        el: '.vehicle-swiper .swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-      },
+      pagination: false,
 
       // Responsive breakpoints
       breakpoints: {
-        // Mobile: 1 column, 2 rows (2 cards stacked vertically)
+        // Mobile: 2x2 grid
         320: {
           slidesPerView: 1,
           grid: {
             rows: 2
           },
-          spaceBetween: 20,
           centeredSlides: true,
           navigation: {
             enabled: true
           }
         },
 
-        // Tablet: 1 column, 2 rows (2 cards stacked vertically)
+        // Tablet: 3x2 grid
         768: {
-          slidesPerView: 1,
+          slidesPerView: 3,
           grid: {
             rows: 2
           },
-          spaceBetween: 30,
           centeredSlides: true,
           navigation: {
             enabled: true
           }
         },
 
-        // Desktop - 4x2 grid
+        // Desktop: 4x2 grid
         1024: {
+          slidesPerView: 3,
+          grid: {
+            rows: 2
+          },
+          centeredSlides: false,
+          navigation: {
+            enabled: true
+          }
+        },
+
+        1280: {
           slidesPerView: 4,
           grid: {
             rows: 2
           },
-          spaceBetween: 50,
           centeredSlides: false,
           navigation: {
             enabled: true
           }
         }
+
       },
 
       // Auto height

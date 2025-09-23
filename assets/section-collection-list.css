@@ -720,4 +720,8 @@ li.navigation-item h3:hover {
     justify-content: center;
     align-items: center;
   }
+
+  .collection-list-wrapper .ml-button-primary {
+    margin-top: 35px !important;
+  }
 }
