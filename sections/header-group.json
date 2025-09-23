@@ -85,8 +85,8 @@
         "show_currency": false,
         "enable_language_selector": false,
         "mobile_logo_position": "left",
-        "padding_top": 22,
-        "padding_bottom": 22
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     }
   },

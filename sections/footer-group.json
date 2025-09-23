@@ -8,83 +8,90 @@
  * ------------------------------------------------------------
  */
  {
-  "name": "t:sections.footer.name",
-  "type": "footer",
+  "name": "t:sections.header.name",
+  "type": "header",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "announcement-bar": {
+      "type": "announcement-bar",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
+        "announcement-bar-0": {
+          "type": "announcement",
           "settings": {
-            "heading": "Collection",
-            "menu": "footer"
-          }
-        },
-        "footer-1": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Best sellers",
-            "menu": "footer"
-          }
-        },
-        "89f2b72b-8551-4b3c-a430-1719424d7f61": {
-          "type": "link_list",
-          "settings": {
-            "heading": "About us",
-            "menu": "footer"
-          }
-        },
-        "7760174b-bd0c-4b3e-b524-15a41eb9dabc": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Customer service",
-            "menu": "footer"
-          }
-        },
-        "link_list_8rYTyg": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Legal support",
-            "menu": "footer"
+            "text": "Upgrade Your Power Wheels and Ride-On Toys!",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "footer-0",
-        "footer-1",
-        "89f2b72b-8551-4b3c-a430-1719424d7f61",
-        "7760174b-bd0c-4b3e-b524-15a41eb9dabc",
-        "link_list_8rYTyg"
+        "announcement-bar-0"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
-        "heading_size": "h5",
-        "logo": "shopify://shop_images/ml-toy-logo.png",
-        "logo_width": 190,
-        "show_social": true,
-        "social_icon_style": "default",
-        "social_label": "",
-        "newsletter_enable": true,
-        "newsletter_enable_top": true,
-        "newsletter_title": "",
-        "newsletter_description": "<p>Join our newsletter for new offers.</p>",
-        "enable_follow_on_shop": true,
+        "color_scheme": "",
+        "show_line_separator": false,
+        "announcement_menu": "",
+        "show_social": false,
+        "auto_rotate": true,
+        "change_slides_speed": 5,
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "footer_subtext": "<p>This is a demo store. All images have been sourced from Shutterstock and Adobe stock.</p>",
-        "payment_enable": true,
-        "policy_color_scheme": "",
-        "show_policy": true,
-        "policy_padding_top": 20,
-        "policy_padding_bottom": 20,
-        "margin_top": 0,
-        "padding_top": 80,
-        "padding_bottom": 50
+        "font_weight": "fw-400",
+        "font_size": "small"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "link_list_4TGqRe": {
+          "type": "link_list",
+          "settings": {
+            "menu_drawer_title": "Catalog",
+            "menu_drawer": "main-menu",
+            "icon": "shopify://shop_images/category_1.svg",
+            "icon_width": 20,
+            "icon_position": "top"
+          }
+        },
+        "item_icon_fpypKt": {
+          "type": "item_icon",
+          "settings": {
+            "menu_icon_title": "Start Here",
+            "icon": "shopify://shop_images/icon-help_1.svg",
+            "icon_width": 20,
+            "icon_position": "top"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_4TGqRe",
+        "item_icon_fpypKt"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu-copy",
+        "menu_font_weight": "500",
+        "menu_type_desktop": "mega",
+        "show_mm_image": false,
+        "image_ratio": "landscape",
+        "drawer_product": "",
+        "sticky_header_type": "reduce-logo-size",
+        "show_line_separator": false,
+        "show_shadow": false,
+        "round_borders": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "show_image": false,
+        "show_name": false,
+        "show_currency": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "left",
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     }
   },
   "order": [
-    "footer"
+    "announcement-bar",
+    "header"
   ]
 }
