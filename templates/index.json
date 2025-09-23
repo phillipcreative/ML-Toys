@@ -148,62 +148,71 @@
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/car_cutout_1.png",
-            "vehicle_title": "Power Wheels Arctic Cat"
+            "vehicle_title": "Power Wheels Arctic Cat",
+            "vehicle_link": ""
           }
         },
         "vehicle_jJFBe8": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/Group_427320675.png",
-            "vehicle_title": "Power Wheels ATV"
+            "vehicle_title": "Power Wheels ATV",
+            "vehicle_link": ""
           }
         },
         "vehicle_fXeNXY": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/vehicle-power-wheels-baja-extreme-800px_600x_cutout_1.png",
-            "vehicle_title": "Power Wheels Baja Extreme"
+            "vehicle_title": "Power Wheels Baja Extreme",
+            "vehicle_link": ""
           }
         },
         "vehicle_MYa83y": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/vehicle-power-wheels-baja-trailster-800px_600x_cutout_1.png",
-            "vehicle_title": "Power Wheels Baja Trailster"
+            "vehicle_title": "Power Wheels Baja Trailster",
+            "vehicle_link": ""
           }
         },
         "vehicle_DyC69y": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/vehicle-power-wheels-C7-corvette-800px_600x_cutout_1.png",
-            "vehicle_title": "Power Wheels C7 Corvette"
+            "vehicle_title": "Power Wheels C7 Corvette",
+            "vehicle_link": ""
           }
         },
         "vehicle_Jwrp8Y": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/collection-barbie-dream-camper_600x_cutout_1_1.png",
-            "vehicle_title": "Power Wheels Camper"
+            "vehicle_title": "Power Wheels Camper",
+            "vehicle_link": ""
           }
         },
         "vehicle_xkRkk8": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/vehicle-power-wheels-cadillac-escalade-800px_600x_cutout_1.png",
-            "vehicle_title": "Power Wheels Cadillac Escalade"
+            "vehicle_title": "Power Wheels Cadillac Escalade",
+            "vehicle_link": ""
           }
         },
         "vehicle_y7CkyQ": {
           "type": "vehicle",
           "settings": {
             "vehicle_image": "shopify://shop_images/pink_cart_cutout_1_ad8bfb81-4027-46f3-953e-ac41563d1c0c.png",
-            "vehicle_title": "Power Wheels Baja Trailster"
+            "vehicle_title": "Power Wheels Baja Trailster",
+            "vehicle_link": ""
           }
         },
         "vehicle_rnBh8r": {
           "type": "vehicle",
           "settings": {
-            "vehicle_title": "Vehicle Name"
+            "vehicle_title": "Vehicle Name",
+            "vehicle_link": ""
           }
         }
       },
@@ -225,8 +234,9 @@
         "left_icon": "shopify://shop_images/79.svg",
         "right_icon": "shopify://shop_images/020.svg",
         "background_image": "shopify://shop_images/stock_parts_bg_1.jpg",
+        "background_image_mobile": "shopify://shop_images/Group_427320677.png",
         "button_label": "View All Vehicles",
-        "button_link": ""
+        "button_link": "shopify://pages/upgrades-by-vehicle"
       }
     },
     "ml_video_carousel_Wgrakp": {
@@ -257,7 +267,6 @@
         "video_8bH7PF",
         "video_zbjyzR"
       ],
-      "disabled": true,
       "name": "ML Video Carousel",
       "settings": {
         "title": "",
@@ -505,7 +514,7 @@
             "custom_heading": "How To Get In To Power Wheels Racing",
             "custom_description": "<p>March 19, 2025 - 6 min read</p>",
             "custom_link_title": "Read More",
-            "custom_link_url": "",
+            "custom_link_url": "shopify://blogs/power-wheels-and-ride-on-toys/how-to-get-in-to-power-wheels-racing",
             "text_color": "foreground",
             "text_size_block": "medium",
             "button_style": "link_icon",
@@ -519,7 +528,7 @@
             "custom_heading": "How Do You Make a Power Wheels Faster?",
             "custom_description": "<p>March 16, 2025 - 3 min read</p>",
             "custom_link_title": "Read More",
-            "custom_link_url": "",
+            "custom_link_url": "shopify://blogs/power-wheels-and-ride-on-toys/how-do-you-make-a-power-wheels-faster",
             "text_color": "foreground",
             "text_size_block": "medium",
             "button_style": "link_icon",
@@ -533,7 +542,7 @@
             "custom_heading": "What’s the Best Battery for a Power Wheels?",
             "custom_description": "<p>March 13, 2025 - 7 min read</p>",
             "custom_link_title": "Read More",
-            "custom_link_url": "",
+            "custom_link_url": "shopify://blogs/power-wheels-and-ride-on-toys/what-s-the-best-battery-for-a-power-wheels",
             "text_color": "foreground",
             "text_size_block": "medium",
             "button_style": "link_icon",

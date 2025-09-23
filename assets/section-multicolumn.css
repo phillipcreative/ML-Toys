@@ -284,7 +284,7 @@
   z-index: 1;
 }
 
-.multicolumn-list li:last-child:has(.card-without-spaces) .multicolumn-card__info { 
+.multicolumn-list li:last-child:has(.card-without-spaces) .multicolumn-card__info {
   padding-bottom: 0;
 }
 
@@ -296,11 +296,11 @@
 .card-without-spaces .multicolumn-card__image-wrapper:has(+ .multicolumn-card__info:not(:empty)) {
   margin: 0 0 2.5rem 0;
   padding: 0;
-} 
+}
 
 .center > .card-without-spaces .multicolumn-card__image-wrapper:has(+ .multicolumn-card__info:not(:empty)) {
   margin: 0 auto 2.5rem;
-} 
+}
 
 .multicolumn-card__image-wrapper:has(+ .multicolumn-card__info:not(:empty)) {
   margin-top: 2.5rem;
@@ -384,7 +384,7 @@
   .multicolumn-list__item:last-of-type .multicolumn-card.image-overlay .multicolumn-card__info {
 	padding-bottom: 2.5rem;
   }
-  
+
   .multicolumn-card-spacing {
 	padding-top: 0rem;
   }
@@ -457,9 +457,9 @@
     padding: 3rem 3rem 4rem;
   }
 
-  .background-none .multicolumn-list .multicolumn-card__image-wrapper + .multicolumn-card__info, 
+  .background-none .multicolumn-list .multicolumn-card__image-wrapper + .multicolumn-card__info,
   .background-none .multicolumn-list:not(.slider) .center .multicolumn-card__image-wrapper + .multicolumn-card__info,
-  .background-none .grid--4-col-desktop.multicolumn-list .multicolumn-card__image-wrapper + .multicolumn-card__info, 
+  .background-none .grid--4-col-desktop.multicolumn-list .multicolumn-card__image-wrapper + .multicolumn-card__info,
   .background-none .grid--4-col-desktop.multicolumn-list:not(.slider) .center .multicolumn-card__image-wrapper + .multicolumn-card__info {
     padding-top: 2rem;
   }
@@ -559,9 +559,9 @@
   text-decoration: none;
   margin-top: 2rem;
   font-size: 1.6rem;
-  font-weight: var(--link-font-weight);
+  font-weight: bold;
   line-height: 1.125em;
-  color: rgb(var(--color-foreground));
+  color: #ffffff;
   transition: all 0.3s;
 }
 
@@ -584,7 +584,7 @@
 	text-decoration: underline;
 	color: rgb(var(--color-foreground));
   }
-  
+
 
 .multicolumn-card__info .link[aria-disabled="true"] {
   opacity: .7;
@@ -784,4 +784,3 @@
 .add-background-radius {
 	border-radius: var(--text-boxes-radius);
 }
-	

@@ -66,6 +66,9 @@
           {%- case block.type -%}
 
             {%- when 'image' -%}
+              {%- if block.settings.image_link != blank -%}
+                <a href="{{ block.settings.image_link }}" class="collage-card-link">
+              {%- endif -%}
               <div class="collage-card card-wrapper product-card-wrapper color-{{ settings.card_color_scheme }} gradient">
 
                 <div class="media media--transparent ratio" {% if block.settings.image != blank %} style="--ratio-percent: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%" {% else %} style="--ratio-percent: 100%" {% endif %}>
@@ -120,8 +123,14 @@
                   {%- endif -%}
                 </div>
               </div>
+              {%- if block.settings.image_link != blank -%}
+                </a>
+              {%- endif -%}
 
             {%- when 'custom' -%}
+              {%- if block.settings.custom_link_url != blank -%}
+                <a href="{{ block.settings.custom_link_url }}" class="collage-card-link">
+              {%- endif -%}
               <div class="collage-card card-wrapper product-card-wrapper color-{{ block.settings.item_color_scheme }} gradient">
 
                 {% liquid
@@ -213,22 +222,28 @@
 							assign button_style = 'link link-hover'
 						endif
 					-%}
-					<a class="{{ button_style }}" {% if block.settings.custom_link_url == blank %} role="link" aria-disabled="true" {% else %} href="{{ block.settings.custom_link_url }}" {% endif %}>
+					<span class="{{ button_style }}">
 						<span>{{- block.settings.custom_link_title | escape -}}</span>
 						{%- if block.settings.button_style == 'link_icon' -%}
 							<span class="icon-wrap">
 							{%- render 'icon-caret' -%}
 							</span>
 						{%- endif -%}
-					</a>
+					</span>
                     {%- endif -%}
 
                   </div>
                 </div>
 
               </div>
+              {%- if block.settings.custom_link_url != blank -%}
+                </a>
+              {%- endif -%}
 
             {%- when 'image_text' -%}
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="collage-card-link">
+              {%- endif -%}
               <div class="collage-card card-wrapper product-card-wrapper color-{{ block.settings.item_color_scheme }} gradient">
 
                 {% liquid
@@ -320,20 +335,23 @@
 							assign button_style = 'link link-hover'
 						endif
 					-%}
-					<a class="{{ button_style }}" {% if block.settings.link == blank %} role="link" aria-disabled="true" {% else %} href="{{ block.settings.link }}" {% endif %}>
+					<span class="{{ button_style }}">
 						<span>{{- block.settings.link_label | escape -}}</span>
 						{%- if block.settings.button_style == 'link_icon' -%}
 							<span class="icon-wrap">
 							{%- render 'icon-caret' -%}
 							</span>
 						{%- endif -%}
-					</a>
+					</span>
                     {%- endif -%}
 
                   </div>
                 </div>
 
               </div>
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
 
             {%- when 'product' -%}
 
@@ -360,6 +378,7 @@
               %}
 
             {%- when 'blog' -%}
+              <a href="{{ block.settings.article.url }}" class="collage-card-link">
               <div class="collage-card card-wrapper product-card-wrapper color-{{ block.settings.item_color_scheme }} gradient">
 
                 {% liquid
@@ -427,7 +446,7 @@
 
                     {%- if block.settings.article.title != blank -%}
                       <h3 class="inline-richtext">
-                        <a href="{{ block.settings.article.url }}">{{ block.settings.article.title }}</a>
+                        {{ block.settings.article.title }}
                       </h3>
                     {%- endif -%}
 
@@ -465,20 +484,21 @@
 							assign button_style = 'link link-hover'
 						endif
 					-%}
-					<a class="{{ button_style }}" href="{{ block.settings.article.url }}">
+					<span class="{{ button_style }}">
 						<span>{{- block.settings.link_label | escape -}}</span>
 						{%- if block.settings.button_style == 'link_icon' -%}
 							<span class="icon-wrap">
 							{%- render 'icon-caret' -%}
 							</span>
 						{%- endif -%}
-					</a>
+					</span>
                     {%- endif -%}
 
                   </div>
                 </div>
 
               </div>
+              </a>
 
           {%- endcase -%}
 
@@ -583,6 +603,18 @@
 
   .collage-card .media {
     position: relative;
+    overflow: hidden;
+  }
+
+  .collage-card .media img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collage-card-link:hover .collage-card .media img {
+    transform: scale(1.05);
   }
 
   .collage-card .media::after {
@@ -611,6 +643,17 @@
   .collage-card .media .multicolumn-card__info {
     padding: 40px !important;
     align-self: flex-end;
+  }
+
+  .collage-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .collage-card-link:hover {
+    text-decoration: none;
+    color: inherit;
   }
 
   @media only screen and (max-width: 450px) {
@@ -794,6 +837,11 @@
             "type": "image_picker",
             "id": "image",
             "label": "t:sections.collage.blocks.image.settings.image.label"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Image link"
           }
         ]
       },
