@@ -4480,6 +4480,20 @@ h6,
   fill: #fff !important;
 }
 
+.ml-button-primary a {
+  text-decoration: none;
+  color: #001429 !important;
+  font-weight: 500;
+  font-size: 16px !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ml-button-primary:hover a {
+  color: #fff !important;
+}
+
 /* Digmo Updates: Podcast Characters */
 
 .section-apps {

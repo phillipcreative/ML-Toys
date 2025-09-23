@@ -19,6 +19,18 @@
       background-repeat: no-repeat;
     {% endif %}
   }
+
+  /* Mobile background image */
+  @media (max-width: 767px) {
+    .upgrades-by-vehicle {
+      {% if section.settings.background_image_mobile != blank %}
+        background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      {% endif %}
+    }
+  }
 </style>
 
 <div class="upgrades-by-vehicle" data-section-id="{{ section.id }}">
@@ -50,14 +62,25 @@
                   </g>
                 </svg>
               </div>
-              <div class="vehicle-card" tabindex="0">
-                {% if block.settings.vehicle_image != blank %}
-                  {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
-                {% endif %}
-                <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
-              </div>
+              {% if block.settings.vehicle_link != blank %}
+                <a href="{{ block.settings.vehicle_link }}" class="vehicle-card" tabindex="0">
+                  {% if block.settings.vehicle_image != blank %}
+                    {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
+                  {% endif %}
+                  <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
+                </a>
+              {% else %}
+                <div class="vehicle-card" tabindex="0">
+                  {% if block.settings.vehicle_image != blank %}
+                    {{ block.settings.vehicle_image | image_url: width: 200 | image_tag: class: 'vehicle-card__image', loading: 'lazy' }}
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg vehicle-card__image' }}
+                  {% endif %}
+                  <p class="vehicle-card__title">{{ block.settings.vehicle_title }}</p>
+                </div>
+              {% endif %}
             </div>
           </div>
         {% endfor %}
@@ -73,9 +96,9 @@
   </div>
 
   {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-    <div class="view-all-button-wrapper">
-      <a href="{{ section.settings.button_link }}" class="view-all-button">
-        {{ section.settings.button_label }}
+    <div class="ml-button-primary">
+      <a href="{{ section.settings.button_link }}">
+        {{ section.settings.button_label }} {% render 'arrow-right' %}
       </a>
     </div>
   {% endif %}
@@ -210,7 +233,8 @@
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Parts for the most popular brands" },
     { "type": "image_picker", "id": "left_icon", "label": "Left Icon" },
     { "type": "image_picker", "id": "right_icon", "label": "Right Icon" },
-    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image (Desktop)" },
+    { "type": "image_picker", "id": "background_image_mobile", "label": "Background Image (Mobile)" },
     { "type": "text", "id": "button_label", "label": "Button Label", "default": "View All Vehicles" },
     { "type": "url", "id": "button_link", "label": "Button Link" }
   ],
@@ -220,7 +244,8 @@
       "name": "Vehicle",
       "settings": [
         { "type": "image_picker", "id": "vehicle_image", "label": "Vehicle Image" },
-        { "type": "text", "id": "vehicle_title", "label": "Vehicle Title", "default": "Vehicle Name" }
+        { "type": "text", "id": "vehicle_title", "label": "Vehicle Title", "default": "Vehicle Name" },
+        { "type": "url", "id": "vehicle_link", "label": "Vehicle Link" }
       ]
     }
   ],

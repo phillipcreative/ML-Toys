@@ -31,8 +31,7 @@
   .vehicle-swiper {
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 650px; /* Increased to accommodate image overflow */
-    /* margin-top: 100px; */
+    min-height: 600px; /* Increased to accommodate image overflow */
     padding: 0 20px;
     position: relative;
     overflow: visible;
@@ -86,7 +85,7 @@
     height: auto;
     margin-bottom: 15px;
     position: absolute;
-    top: -85px;
+    top: -102px;
     left: 0;
     right: 0;
     margin: auto;
@@ -101,6 +100,8 @@
     margin: 0;
     position: relative;
     z-index: 3; /* keep above card and SVG */
+    padding: 0px 20px;
+    line-height: 18px;
   }
 
   .view-all-button-wrapper { margin-top: 40px; }
