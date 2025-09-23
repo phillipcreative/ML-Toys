@@ -1,7 +1,16 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
   "current": {
-    "logo": "shopify:\/\/shop_images\/ml-toy-logo.png",
-    "logo_width": 190,
+    "logo": "shopify://shop_images/ml-toy-logo.png",
+    "logo_width": 120,
     "favicon": "",
     "type_header_font": "inter_n8",
     "heading_2_size": 44,
@@ -10,7 +19,7 @@
     "body_font_size_large": 22,
     "body_font_size": 18,
     "body_font_size_mobile": 16,
-    "page_width": 1440,
+    "page_width": 1350,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 30,
     "spacing_grid_vertical": 30,
@@ -153,27 +162,27 @@
     "content_for_index": [],
     "blocks": {
       "16881471024131275657": {
-        "type": "shopify:\/\/apps\/searchanise-search-filter\/blocks\/app-embed\/d8f24ada-02b1-458a-bbeb-5bf16d5c921e",
+        "type": "shopify://apps/searchanise-search-filter/blocks/app-embed/d8f24ada-02b1-458a-bbeb-5bf16d5c921e",
         "disabled": true,
         "settings": {}
       },
       "15971307017328703636": {
-        "type": "shopify:\/\/apps\/ecom-youtube-card-gallery\/blocks\/app-embed\/a0f27191-6c92-4d0a-a87c-2e3f3ecdeeab",
+        "type": "shopify://apps/ecom-youtube-card-gallery/blocks/app-embed/a0f27191-6c92-4d0a-a87c-2e3f3ecdeeab",
         "disabled": false,
         "settings": {}
       },
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
       },
       "14060646107696862457": {
-        "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
       },
       "3720565183479497137": {
-        "type": "shopify:\/\/apps\/globo-product-option\/blocks\/app-embed-block\/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
+        "type": "shopify://apps/globo-product-option/blocks/app-embed-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
         "disabled": false,
         "settings": {}
       }
@@ -234,8 +243,8 @@
           "accent_color": "#df1d37",
           "button": "#df1d37",
           "button_label": "#ffffff",
-          "button_hover": "#df1d37",
-          "button_label_hover": "#ffffff",
+          "button_hover": "#ffffff",
+          "button_label_hover": "#1d1d1f",
           "button_2": "#ffffff",
           "button_label_2": "#1d1d1f",
           "button_2_hover": "#ffffff",
@@ -244,7 +253,7 @@
           "slider_btn": "#ffffff",
           "slider_btn_label": "#1d1d1f",
           "slider_btn_hover": "#ff7151",
-          "slider_btn_label_hover": "#ffffff",
+          "slider_btn_label_hover": "#1d1d1f",
           "input_border_color": "#d9d9d9"
         }
       },
@@ -868,11 +877,11 @@
       "sold_color_bg": "#ff353c",
       "blog_color_text": "#1d1d1f",
       "blog_color_bg": "#ffd234",
-      "social_facebook_link": "https:\/\/facebook.com\/shopify",
-      "social_instagram_link": "https:\/\/instagram.com\/shopify",
+      "social_facebook_link": "https://facebook.com/shopify",
+      "social_instagram_link": "https://instagram.com/shopify",
       "social_youtube_link": "",
       "social_tiktok_link": "",
-      "social_twitter_link": "https:\/\/x.com\/shopify",
+      "social_twitter_link": "https://x.com/shopify",
       "social_snapchat_link": "",
       "social_pinterest_link": "",
       "social_tumblr_link": "",
@@ -1238,11 +1247,11 @@
       "sold_color_bg": "#1d1d1f",
       "blog_color_text": "#ffffff",
       "blog_color_bg": "#4e433c",
-      "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
-      "social_instagram_link": "https:\/\/www.instagram.com\/shopify\/",
+      "social_facebook_link": "https://www.facebook.com/shopify",
+      "social_instagram_link": "https://www.instagram.com/shopify/",
       "social_youtube_link": "",
       "social_tiktok_link": "",
-      "social_twitter_link": "https:\/\/x.com\/shopify",
+      "social_twitter_link": "https://x.com/shopify",
       "social_snapchat_link": "",
       "social_pinterest_link": "",
       "social_tumblr_link": "",
@@ -2051,11 +2060,11 @@
       "sold_color_bg": "#c12418",
       "blog_color_text": "#ffffff",
       "blog_color_bg": "#778671",
-      "social_facebook_link": "https:\/\/facebook.com\/shopify",
-      "social_instagram_link": "http:\/\/instagram.com\/shopify",
+      "social_facebook_link": "https://facebook.com/shopify",
+      "social_instagram_link": "http://instagram.com/shopify",
       "social_youtube_link": "",
       "social_tiktok_link": "",
-      "social_twitter_link": "https:\/\/x.com\/shopify",
+      "social_twitter_link": "https://x.com/shopify",
       "social_snapchat_link": "",
       "social_pinterest_link": "",
       "social_tumblr_link": "",

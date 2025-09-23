@@ -62,7 +62,7 @@ customElements.define('quick-order-list-remove-all-button', QuickOrderListRemove
 class QuickOrderList extends HTMLElement {
   constructor() {
     super();
-    this.cart = document.querySelector('cart-drawer');
+    this.initializeCart();
     this.actions = {
       add: 'ADD',
       update: 'UPDATE'
@@ -77,6 +77,17 @@ class QuickOrderList extends HTMLElement {
       this.onChange(event);
     }, ON_CHANGE_DEBOUNCE_TIMER);
     this.addEventListener('change', debouncedOnChange.bind(this));
+  }
+
+  initializeCart() {
+    this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+
+    // If cart is not found, try again after a short delay
+    if (!this.cart) {
+      setTimeout(() => {
+        this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+      }, 100);
+    }
   }
 
   cartUpdateUnsubscriber = undefined;
@@ -167,7 +178,9 @@ class QuickOrderList extends HTMLElement {
         parsedState.items.length > 0 ? sectionElement.parentElement.classList.remove('is-empty') : sectionElement.parentElement.classList.add('is-empty');
 
         setTimeout(() => {
-          document.querySelector('#CartDrawer-Overlay').addEventListener('click', this.cart.close.bind(this.cart));
+          if (this.cart) {
+            document.querySelector('#CartDrawer-Overlay').addEventListener('click', this.cart.close.bind(this.cart));
+          }
         });
       }
       const elementToReplace = sectionElement && sectionElement.querySelector(section.selector) ? sectionElement.querySelector(section.selector) : sectionElement;
