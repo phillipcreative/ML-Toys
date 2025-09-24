@@ -237,16 +237,26 @@
     margin-top: 50px !important;
   }
 
-.upgrade-next,
-.upgrade-prev {
-  box-shadow: none;
-  background-color: transparent;
-  width: 47px !important;
-}
+  .upgrade-next,
+  .upgrade-prev {
+    box-shadow: none;
+    background-color: transparent;
+    width: 47px !important;
+  }
 
   .upgrade-next:after,
   .upgrade-prev:after {
     display: none;
+  }
+
+  .upgrade-next {
+    right: var(--swiper-navigation-sides-offset, 25px) !important;
+    left: auto;
+  }
+
+  .upgrade-prev {
+    left: var(--swiper-navigation-sides-offset, 25px) !important;
+    right: auto;
   }
 
   /* Responsive adjustments */

@@ -271,7 +271,7 @@
       "name": "ML Video Carousel",
       "settings": {
         "title": "",
-        "enable_ripped_edges": false,
+        "enable_ripped_edges": true,
         "background_image": "shopify://shop_images/Mask_group.png",
         "background_color": "#001429",
         "section_text_color": "#fefefe",
@@ -505,7 +505,7 @@
         "section_container_width": false,
         "hide_scroll_mobile": false,
         "padding_top": 60,
-        "padding_bottom": 48
+        "padding_bottom": 144
       }
     },
     "ml_toys_product_slider_qxnMqY": {
@@ -537,7 +537,7 @@
       ],
       "name": "ML Toys Product slider",
       "settings": {
-        "enable_ripped_edges_top": false,
+        "enable_ripped_edges_top": true,
         "background_image": "shopify://shop_images/bg-white-bg-racetrack.svg",
         "image_position": "image-right",
         "section_color": "#001429",
@@ -598,7 +598,7 @@
       ],
       "name": "ML Toys Featured Blog",
       "settings": {
-        "enable_ripped_edges": false,
+        "enable_ripped_edges": true,
         "background_image": "shopify://shop_images/bottom-bg-racetrack_2310922c-b6fc-489c-89a3-95f405519849.svg",
         "background_color": "#001429",
         "section_text_color": "#ffffff",

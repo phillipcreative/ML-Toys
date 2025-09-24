@@ -3,15 +3,15 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <div class="ml-video-carousel">
-  <div class="text-container">
-    <div class="squiggly-arrow">{% render 'squiggly-arrow' %}</div>
-    <h2>{{ section.settings.heading }} {% render 'header-accent' %}</h2>
-    <p>{{ section.settings.description }}</p>
-    {% if section.settings.button_text and section.settings.button_link %}
-      <a href="{{ section.settings.button_link }}" class="ml-button-primary">{{ section.settings.button_text }} {% render 'arrow-right' %}</a>
-    {% endif %}
-  </div>
   <div class="video-container">
+    <div class="text-container">
+      <div class="squiggly-arrow">{% render 'squiggly-arrow' %}</div>
+      <h2>{{ section.settings.heading }} {% render 'header-accent' %}</h2>
+      <p>{{ section.settings.description }}</p>
+      {% if section.settings.button_text and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="ml-button-primary">{{ section.settings.button_text }} {% render 'arrow-right' %}</a>
+      {% endif %}
+    </div>
     <div class="swiper video-carousel-swiper">
       <div class="swiper-wrapper">
         {%- for block in section.blocks -%}
@@ -87,17 +87,18 @@
         {%- endfor -%}
       </div>
 
-      {%- if section.blocks.size > 1 -%}
-        <!-- Swiper pagination -->
-        <div class="swiper-pagination"></div>
-      {%- endif -%}
     </div>
 
     {%- if section.blocks.size > 1 -%}
+      <!-- Custom pagination above navigation -->
+      <div class="video-carousel-pagination">
+        <div class="swiper-pagination"></div>
+      </div>
+
       <!-- Navigation arrows outside swiper container -->
       <div class="video-carousel-navigation">
-        <div class="swiper-button-prev ml-button-primary"></div>
-        <div class="swiper-button-next ml-button-primary"></div>
+        <div class="swiper-button-prev ml-button-primary">{% render 'arrow-right' %}</div>
+        <div class="swiper-button-next ml-button-primary">{% render 'arrow-right' %}</div>
       </div>
     {%- endif -%}
   </div>
@@ -112,12 +113,13 @@
       background-repeat: no-repeat;
       background-color: {{ section.settings.background_color }};
       color: {{ section.settings.section_text_color }};
-      padding: 90px 100px;
+      padding: 90px 300px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       gap: 50px;
+      position: relative;
     }
 
     .ml-video-carousel .text-container {
@@ -126,14 +128,20 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      position: relative;
-      width: 30%;
+      /* position: relative; */
+      position: absolute;
+      left: -300px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      padding-left: 2rem;
     }
 
     .ml-video-carousel .text-container .squiggly-arrow svg {
       position: absolute;
-      top: -81px;
-      right: -1px;
+      top: -91px;
+      right: 29px;
+      transform: rotate(354deg);
     }
 
     .ml-video-carousel .text-container h2 {
@@ -157,14 +165,13 @@
 
     .ml-video-carousel .video-container {
       color: {{ section.settings.section_text_color }};
-      /* flex: 1; */
-      width: 70%;
-      margin-left: 50px;
+      width: 100%;
+      max-width: 900px;
+      position: relative;
     }
 
     .video-carousel-swiper {
       position: relative;
-      overflow: visible;
       border-radius: 12px;
     }
 
@@ -200,8 +207,7 @@
     .video-carousel-navigation .swiper-button-prev {
       background-color: #ffffff;
       color: #001429;
-      font-family: 'Poppins', sans-serif;
-      border: 3px solid #FFFFFF;
+      border: 3px solid #001429;
       padding: 10px 20px;
       box-shadow: 5px 5px #001429;
       transition: 0.25s;
@@ -220,10 +226,13 @@
       min-height: 50px;
     }
 
+    .ml-video-carousel .text-container .ml-button-primary {
+      padding: 10px 10px 10px 20px;
+    }
+
     .video-carousel-navigation .swiper-button-next:after,
     .video-carousel-navigation .swiper-button-prev:after {
-      font-size: 18px;
-      font-weight: 700;
+        display: none;
     }
 
     .video-carousel-navigation .swiper-button-next:hover,
@@ -238,15 +247,24 @@
       transform: translate(5px, 5px);
     }
 
-    /* Swiper pagination */
-    .video-carousel-swiper .swiper-pagination {
-      bottom: -60px;
-      position: relative;
-      text-align: center;
-      margin-top: 30px;
+    .video-carousel-navigation .swiper-button-prev {
+      transform: rotate(180deg) !important;
     }
 
-    .video-carousel-swiper .swiper-pagination-bullet {
+    /* Custom pagination container */
+    .video-carousel-pagination {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    /* Swiper pagination */
+    .video-carousel-pagination .swiper-pagination {
+      position: relative;
+      bottom: auto;
+      margin-top: 0;
+    }
+
+    .video-carousel-pagination .swiper-pagination-bullet {
       background: {{ section.settings.section_text_color }};
       opacity: 0.4;
       width: 60px;
@@ -256,15 +274,54 @@
       transition: all 0.3s ease;
     }
 
-    .video-carousel-swiper .swiper-pagination-bullet-active {
+    .video-carousel-pagination .swiper-pagination-bullet-active {
       opacity: 1;
       background: {{ section.settings.section_text_color }};
       transform: scale(1.2);
     }
 
-    .video-carousel-swiper .swiper-pagination-bullet:hover {
+    .video-carousel-pagination .swiper-pagination-bullet:hover {
       opacity: 0.8;
       transform: scale(1.1);
+    }
+
+    .ml-video-carousel .ml-button-primary {
+      margin: unset;
+      font-size: 25px !important;
+      padding: 10px;
+      display: flex;
+    }
+
+    .ml-video-carousel .ml-button-primary svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    .video-carousel-item {
+      opacity: 0.7;
+      background-color: #001429;
+    }
+
+    .video-carousel-item.swiper-slide-active {
+      opacity: 1;
+    }
+
+    .ml-video-carousel .deferred-media__poster-button {
+      background-color: #001429;
+    }
+
+    .ml-video-carousel .deferred-media__poster-button svg path {
+      fill: #fff !important;
+    }
+
+    .ml-video-carousel .video-carousel-item .video-section__media {
+      background-color: unset;
+    }
+
+    @media screen and (max-width: 1550px) {
+      .ml-video-carousel .video-container {
+        max-width: 750px;
+      }
     }
 
     @media screen and (max-width: 1200px) {
@@ -274,23 +331,79 @@
       }
 
       .ml-video-carousel .video-container {
-        margin-left: 0;
-        margin-top: 40px;
+        margin-left: 30px;
         width: 100%;
+        max-width: 600px;
+      }
+
+      .ml-video-carousel .text-container h2 {
+        font-size: 60px;
+      }
+
+      .ml-video-carousel .text-container p {
+        font-size: 16px;
+        padding-right: 26px;
+      }
+
+       .text-container .ml-button-primary {
+         font-size: 18px !important;
+       }
+
+       .ml-video-carousel .ml-button-primary svg {
+        height: 25px;
+        width: 25px;
       }
 
       .video-carousel-item {
         width: 280px;
       }
 
-      .video-carousel-swiper .swiper-pagination {
-        bottom: -50px;
-        margin-top: 25px;
+      .video-carousel-pagination {
+        margin: 15px 0;
       }
 
-      .video-carousel-navigation {
-        gap: 50px;
-        margin-top: 15px;
+      .ml-video-carousel .text-container {
+        left: -240px;
+      }
+    }
+
+    @media screen and (max-width: 1050px) {
+
+    .ml-video-carousel {
+      padding: 50px;
+    }
+      .ml-video-carousel .text-container {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: translateY(0);
+        padding-left: 0;
+        margin: auto;
+        margin-bottom: 50px;
+        max-width: 310px;
+      }
+
+      .ml-video-carousel .video-container {
+        margin-left: 0px;
+      }
+
+      .ml-video-carousel .text-container .squiggly-arrow svg {
+        position: absolute;
+        top: unset;
+        right: -34px;
+        transform: rotate(75deg);
+        bottom: 0px;
+      }
+
+      .ml-video-carousel .text-container h2 svg {
+        position: absolute;
+        top: -13px;
+        left: -30px;
+        width: 30px;
+      }
+
+      .ml-video-carousel .text-container h2 {
+
       }
     }
 
@@ -304,7 +417,7 @@
       }
 
       .video-carousel-navigation {
-        gap: 40px;
+        gap: 5px;
         margin-top: 10px;
       }
 
@@ -327,12 +440,16 @@
         transform: translate(3px, 3px);
       }
 
-      .video-carousel-swiper .swiper-pagination {
-        bottom: -40px;
-        margin-top: 20px;
+      .video-carousel-navigation .swiper-button-next:hover,
+      .video-carousel-navigation .swiper-button-prev:hover {
+        background-color: #ffffff;
       }
 
-      .video-carousel-swiper .swiper-pagination-bullet {
+      .video-carousel-pagination {
+        margin: 10px 0;
+      }
+
+      .video-carousel-pagination .swiper-pagination-bullet {
         width: 45px;
         height: 8px;
         border-radius: 10px;
@@ -340,34 +457,16 @@
       }
     }
 
-    .ml-video-carousel .ml-button-primary {
-      margin: unset;
-      font-size: 18px !important;
-      display: flex;
+    @media screen and (max-width: 450px) {
+    .video-carousel-navigation .swiper-button-next, .video-carousel-navigation .swiper-button-prev {
+      padding: 10px;
+    }
     }
 
-    .ml-video-carousel .deferred-media__poster-button {
-      background-color: #001429;
-    }
-
-    .ml-video-carousel .deferred-media__poster-button svg path {
-      fill: #fff !important;
-    }
-
-    .ml-video-carousel .video-carousel-item .video-section__media {
-      background-color: unset;
-    }
-
-    @media only screen and (max-width: 450px) {
-
-      .ml-video-carousel {
-        gap: 0px
-      }
-      .ml-video-carousel .text-container {
-        width: 100%;
-      }
-      .squiggly-arrow {
-        display: none;
+    @media screen and (max-width: 375px) {
+      .ml-video-carousel .text-container .squiggly-arrow svg {
+        width: 100px;
+        right: 0px;
       }
     }
   </style>
@@ -380,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const swiper = new Swiper('.video-carousel-swiper', {
     // Swiper parameters - show multiple slides
-    slidesPerView: 2.2,
+    slidesPerView: 1,
     spaceBetween: 20,
     centeredSlides: false,
 
@@ -392,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Pagination
     pagination: {
-      el: '.video-carousel-swiper .swiper-pagination',
+      el: '.video-carousel-pagination .swiper-pagination',
       clickable: true,
     },
 
@@ -418,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       // when window width is >= 1024px
       1024: {
-        slidesPerView: 1.2,
+        slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: false,
       }
