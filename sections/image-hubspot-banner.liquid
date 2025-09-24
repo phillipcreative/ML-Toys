@@ -141,12 +141,12 @@
                       <a class="bubble-image" href="{{ block.settings.product.url }}">
                         <img src="{{ block.settings.product.featured_image | image_url: width: 200 }}"
                         alt="{{ block.settings.product.featured_image.alt | escape }}"
-                        loading="lazy" width="80" height="100">
+                        loading="lazy" width="100" height="auto">
 
                         {%- if block.settings.product.media[1] != null -%}
                           <img src="{{ block.settings.product.media[1] | image_url: width: 200 }}"
                           alt="{{ block.settings.product.media[1].alt | escape }}"
-                          loading="lazy" width="80" height="100">
+                          loading="lazy" width="100" height="auto">
                         {%- endif -%}
                       </a>
                     {% endif %}

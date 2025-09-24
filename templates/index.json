@@ -211,7 +211,8 @@
         "vehicle_rnBh8r": {
           "type": "vehicle",
           "settings": {
-            "vehicle_title": "Vehicle Name",
+            "vehicle_image": "shopify://shop_images/car_cutout_1.png",
+            "vehicle_title": "Vehicle",
             "vehicle_link": ""
           }
         }

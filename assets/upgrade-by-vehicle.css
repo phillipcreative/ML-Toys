@@ -25,6 +25,7 @@
     max-width: 1350px;
     margin: 0 auto;
     padding: 0 80px; /* Increased padding to accommodate outside arrows */
+    position: relative;
   }
 
   /* Swiper container styles */
@@ -130,9 +131,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
+    transform: translate(-50%, -50%) rotate(15deg);
+    width: 130%;
+    height: 130%;
     pointer-events: none;
     z-index: 0; /* behind the card */
   }
@@ -226,6 +227,28 @@
     bottom: auto;
   }
 
+  .upgrades-by-vehicle__grid-container .swiper-pagination-clickable .swiper-pagination-bullet {
+    width: 50px;
+    height: 8px;
+    border-radius: 6px;
+  }
+
+  .upgrades-by-vehicle .ml-button-primary {
+    margin-top: 50px !important;
+  }
+
+.upgrade-next,
+.upgrade-prev {
+  box-shadow: none;
+  background-color: transparent;
+  width: 47px !important;
+}
+
+  .upgrade-next:after,
+  .upgrade-prev:after {
+    display: none;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 1200px) {
     .vehicle-swiper .swiper-button-next {
@@ -310,6 +333,10 @@
 
     .upgrades-by-vehicle__title {
       font-size: 24px;
+    }
+
+    .upgrades-by-vehicle .ml-button-primary {
+      margin-top: 35px !important;
     }
   }
 
