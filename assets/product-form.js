@@ -112,11 +112,30 @@ if (!customElements.get('product-form')) {
 				  { once: true }
 				);
 				quickAddModal.hide(true);
-			  } else {
-				if (this.cart) {
-				  this.cart.renderContents(response);
-				}
-			  }
+              } else {
+                if (this.cart) {
+                  // If cart drawer custom element is registered, use its render method; otherwise, fallback to manual refresh + open
+                  if (typeof this.cart.renderContents === 'function') {
+                    this.cart.renderContents(response);
+                  } else {
+                    fetch(`${routes.cart_url}?section_id=cart-drawer`)
+                      .then((res) => res.text())
+                      .then((html) => {
+                        const parsed = new DOMParser().parseFromString(html, 'text/html');
+                        const drawerHtml = parsed.querySelector('#CartDrawer');
+                        const liveDrawer = document.querySelector('#CartDrawer');
+                        if (drawerHtml && liveDrawer) {
+                          liveDrawer.innerHTML = drawerHtml.innerHTML;
+                        }
+                        const drawerEl = document.querySelector('cart-drawer');
+                        if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
+                      })
+                      .catch(() => {
+                        window.location = window.routes.cart_url;
+                      });
+                  }
+                }
+              }
 			})
 			.catch((e) => {
 			  console.error(e);
