@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
@@ -45,7 +45,7 @@
           "type": "link_list",
           "settings": {
             "menu_drawer_title": "Catalog",
-            "menu_drawer": "main-menu",
+            "menu_drawer": "ml-mob-menu",
             "icon": "shopify://shop_images/category_1.svg",
             "icon_width": 20,
             "icon_position": "top"

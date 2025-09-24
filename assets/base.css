@@ -4470,6 +4470,20 @@ h6,
   max-width: 1950px !important;
 }
 
+
+.menu-drawer__close-button,
+.menu-drawer__menu-item--parent {
+  font-weight: bold !important;
+  color: #001429;
+}
+
+  .menu-drawer__navigation-container {
+    background-image: url(https://cdn.shopify.com/s/files/1/0773/7150/7009/files/stock_parts_bg_2.jpg?v=1758728019);
+    background-size: cover;
+    background-blend-mode: lighten;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
 @media only screen and (max-width: 1040px) {
   .inline-header-search .header__search {
     justify-self: unset;

@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "6a2fc120-4bf3-4610-a05d-7f55944c6720": {
       "type": "image-banner-filter",
@@ -247,7 +247,7 @@
           "type": "video",
           "settings": {
             "video_title": "",
-            "video_url": "",
+            "video_url": "https://www.youtube.com/watch?v=sHnfvIdxVLw",
             "cover_image": "shopify://shop_images/maxresdefault_1_1.png",
             "description": "",
             "enable_video_looping": false
